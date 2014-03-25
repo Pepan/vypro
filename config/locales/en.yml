@@ -1,0 +1,50 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  page:
+    navig:
+      invoices:
+        back: "Back"
+      notes:
+        back: "Back to task"
+      annexes:
+        back: "« Back to task"
+    title:
+      invoices:
+        new: "New invoice"
+        index: "Invoices"
+        incomes: "Incomes"
+        issues: "Issues"
+      notes:
+        new: "New note"
+      annexes:
+        new: "New annex"
+  activerecord:
+    attributes:
+      invoice:
+        sum_czk: "Sum"
+        created_at: "Created at"
+    models:
+      user: "User"
+  app:
+    helpers:
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+    projects:
+      prices:
+        worth: "Worth"
+        valuation: "Valuation"
+      tasks:
+        worth: "Worth"
+        annex:
+          created: "The annex was added successfully."
+          updated: "The annex was updated successfully."
+        annexes:
+          index: "Attachments to the task"
+          new: "New Annex"
+  helpers:
+    destroy:
+      areyousure: "Are you sure to destroy selected item?"

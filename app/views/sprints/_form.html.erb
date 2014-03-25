@@ -1,0 +1,20 @@
+<%= form_for [@sprint.project, @sprint] do |f| %>
+	<%= render :partial=>'others/form_errors', :locals=>{:object=>f.object}  %>
+
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :tier %><br />
+		<%= f.number_field :tier %>
+	</div>
+	<div class="field">
+		<%= f.label :project %><br />
+		<%= @sprint.project.name.camelcase %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

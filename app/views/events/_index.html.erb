@@ -1,0 +1,22 @@
+<table class="events">
+
+	<% @events.each do |event| %>
+		<tr class="<%= 'viewed' if event.viewed? %> <%= event.action_type.code %> <%= event.target_class %>">
+
+			<td class="time"><%= l(event.created_at, :format => :short) %></td>
+			<% unless controller.controller_name == 'project_user_relations' %>
+				<td class="user"><%= event.user.full_name %></td>
+			<% end %>
+			<td class="type"><%= event.action_type.t_name %></td>
+			<td class="originator"><%= event.t_name %></td>
+			<td class="name"><%= event_with_link_to_name(event) %></td>
+			
+			<% if controller.controller_name == 'events' and can? :manage, Event %>
+				<td class="service"><%= link_to t('app.helpers.edit'), edit_event_path(event) if can? :edit, event %></td>
+				<td class="service"><%= link_to t('app.helpers.destroy'), event, :confirm => t('helpers.destroy.areyousure'), :method => :delete if can? :destroy, event %></td>
+			<% end %>
+
+		</tr>
+	<% end %>
+		
+</table>

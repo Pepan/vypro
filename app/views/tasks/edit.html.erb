@@ -1,0 +1,8 @@
+<h1><%= t("page.title.tasks.edit") %></h1>
+
+<%= render 'form' %>
+
+<section class="actions">
+	<%= link_to t("page.navig.tasks.back"), project_path(@task.project_id) %> |
+	<%= link_to t("app.helpers.show"), project_task_path(@task.project_id, @task.id) %>
+</section>

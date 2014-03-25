@@ -1,0 +1,85 @@
+<h1><%= t('page.title.invoices.index') %></h1>
+
+<h2><%= t('page.title.invoices.incomes') %></h2>
+
+<% unless @incomes.nil? %>
+	<table>
+	    <tr>
+	        <th><%= t('activerecord.attributes.invoice.number') %></th>
+	        <th><%= t('activerecord.attributes.invoice.sum_czk') %></th>
+	        <th><%= t('activerecord.attributes.invoice.created_at') %></th>
+	        <th></th>
+	    </tr>
+
+	    <% @incomes.each do |invoice| %>
+	        <tr>
+	            <td><%= invoice.number %></td>
+	            <td><%= invoice.sum_czk %> CZK</td>
+	            <td><%= l(invoice.created_at, :format => :compact) %></td>
+	            <td class="service" >
+	                <% if can? :show, invoice %>
+	                    <%= link_to t('app.helpers.show'), invoice_path(invoice.id) %>
+	                <% end %>
+	                <% if can? :edit, invoice %>
+	                    <%= link_to t('app.helpers.edit'), edit_invoice_path(invoice.id) %>
+	                <% end %>
+	                <% if can? :destroy, invoice %>
+	                    <%= link_to t('app.helpers.destroy'), invoice_path(invoice.id), confirm: t('helpers.destroy.areyousure'), method: :delete %>
+	                <% end %>
+	            </td>
+	        </tr>
+	    <% end %>
+	</table>
+
+	<hr />
+    <%= t('activerecord.attributes.invoice.sum_czk') %>: <span class="sum"> <%= @income_sum %> CZK </span>
+
+	<h2><%= t('page.title.invoices.issues') %></h2>
+<% end %>
+
+<table>
+    <tr>
+        <th><%= t('activerecord.attributes.invoice.number') %></th>
+        <th><%= t('activerecord.attributes.invoice.sum_czk') %></th>
+        <% if @relation.role? 'chief' %>
+            <th><%= t('activerecord.models.user') %></th>
+		<% end %>
+        <th><%= t('activerecord.attributes.invoice.created_at') %></th>
+        <th></th>
+    </tr>
+
+    <% @issues.each do |invoice| %>
+        <tr>
+            <td><%= invoice.number %></td>
+            <td><%= invoice.sum_czk %></td>
+            <% if @relation.role? 'chief' %>
+	            <td><%= invoice.project_user_relation.user.full_name %></td>
+		    <% end %>
+            <td><%= l(invoice.created_at, :format => :short) %></td>
+            <td class="service" >
+                <% if can? :show, invoice %>
+                    <%= link_to t('app.helpers.show'), invoice_path(invoice.id) %>
+                <% end %>
+                <% if can? :edit, invoice %>
+                    <%= link_to t('app.helpers.edit'), edit_invoice_path(invoice.id) %>
+                <% end %>
+                <% if can? :destroy, invoice %>
+                    <%= link_to t('app.helpers.destroy'), invoice_path(invoice.id), confirm: t('helpers.destroy.areyousure'), method: :delete %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+
+<hr />
+<%= t('activerecord.attributes.invoice.sum_czk') %>: <span class="sum"> <%= @issues_sum %> CZK </span>
+
+<% if current_user.relation_to(@relation.project).role? 'chief' %>
+	<section class="actions">
+		<% unless @incomes.nil? %>
+	        <%= link_to t('page.title.invoices.new'), new_project_user_invoice_of_type_path(@relation.project, @relation, 'income') %>
+		<% else %>
+	        <%= link_to t('page.title.invoices.new'), new_project_user_invoice_of_type_path(@relation.project, @relation, 'issue') %>
+		<% end %>
+	</section>
+<% end %>

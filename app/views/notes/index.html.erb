@@ -1,0 +1,27 @@
+<h1><%= t("page.title.notes.index") %></h1>
+
+<table>
+	<tr>
+	<th><%= t('activerecord.attributes.note.content') %></th>
+	<th><%= t('activerecord.attributes.note.user') %></th>
+	<th><%= t('activerecord.attributes.note.task') %></th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @notes.each do |note| %>
+	<tr>
+	<td><%= note.content %></td>
+	<td><%= note.user %></td>
+	<td><%= note.task %></td>
+		<td><%= link_to t('app.helpers.show'), note_path(note.id) %></td>
+		<td><%= link_to t('app.helpers.edit'), edit_note_path(note.id) %></td>
+		<td><%= link_to t('app.helpers.destroy'), note_path(note.id), confirm: t('helpers.destroy.areyousure'), method: :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<section class="actions">
+	<%= link_to t("page.title.notes.new"), new_note_path %>
+</section>

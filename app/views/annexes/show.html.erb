@@ -1,0 +1,16 @@
+<h1><%= t('page.title.annexes.show') %></h1>
+
+<section class="attributes">
+	<p>
+		<b><%= t('activerecord.attributes.annex.source') %>:</b>
+		<%= link_to @annex.name, @annex.source.url %>
+	</p>
+
+</section>
+
+<section class="actions">
+    <% if can? :edit, @task %>
+        <%= link_to t('app.helpers.edit'), edit_project_task_annex_path(@annex.task.project_id, @annex.task_id, @annex.id) %> |
+    <% end %>
+    <%= link_to t("page.navig.annexes.back"), project_task_path(@annex.task.project_id, @annex.task_id) %>
+</section>

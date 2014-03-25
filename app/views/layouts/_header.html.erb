@@ -1,0 +1,24 @@
+<header>
+	<nav>
+		<ul>
+			<% if user_signed_in? %>
+				<li><%= link_to t("page.navig.home"), page_home_path %></li>
+				<% if can? :read, Project %>
+					<li><%= link_to t("page.title.projects.index"), projects_path %></li>
+				<% end %>
+				<% if can? :read, Company %>
+					<li><%= link_to t("page.title.companies.index"), companies_path %></li>
+				<% end %>
+		    <% if present_user.created_companies.any? %>
+		      <li><%= link_to t('page.title.time_sheets.index'), time_sheets_path %></li>
+		    <% end %>
+			<% else %>
+				<li><%= link_to t("page.navig.home"), root_path %></li>
+			<% end %>
+			<li><%= link_to t("page.navig.help"), page_help_path %></li>
+		</ul>
+	</nav>
+	<% if user_signed_in? %>
+		<%= render 'users/session' %>
+	<% end %>
+</header>

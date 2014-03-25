@@ -1,0 +1,20 @@
+<% if task.efforts.of_period(@time_sheet.from, @time_sheet.to).of_user(@time_sheet.worker_id).count > 0 %>
+
+  <figure class="task">
+    <figcaption><%= task %></figcaption>
+    <figure class="timeusage">
+      <span class="label">
+        <%= t("app.projects.tasks.timeusage") %>:
+      </span>
+			<span class="value">
+				<%= to_timeusage(task.time_usage_limited(@time_sheet.from, @time_sheet.to, @time_sheet.worker_id))+' '+t('app.projects.tasks.hours') %>
+			</span>
+    </figure>
+    <section>
+      <% task.efforts.of_period(@time_sheet.from, @time_sheet.to).of_user(@time_sheet.worker_id).each do |effort| %>
+        <%= render partial: 'time_sheets/index/effort', locals: {effort: effort} %>
+      <% end %>
+    </section>
+  </figure>
+
+<% end %>

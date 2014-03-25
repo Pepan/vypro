@@ -1,0 +1,78 @@
+<h4> <%= t("app.projects.tasks.efforts.progress") %></h4>
+<div class="progress">
+	<div class="bar" style="width:<%= @user.overal_progress.to_s+'%' %>"></div>
+</div>
+<div class="timeusage">
+	<span class="label"> <%= t("app.projects.tasks.timeusage") %>: </span>
+	<span class="value">
+		<%= (@user.overall_time_usage/3600).round(1).to_s+' '+t('app.projects.tasks.hours') %>
+	</span>
+</div>
+<div class="durations">
+	<span class="label"> <%= t("activerecord.attributes.task.duration") %>: </span>
+	<span class="timeusage">
+		<%= to_duration(@user.overall_duration[:best]) %> - <%= to_duration(@user.overall_duration[:worst]) %>
+		<%= t('app.projects.tasks.hours') %>
+	</span>
+</div>
+
+<h4> <%= t("app.projects.prices.title") %></h4>
+<div class="target_amount">
+	<span class="label"> <%= t("app.projects.prices.target_amount") %>: </span>
+	<span class="value">
+		<%= @user_relation.target_amount.to_i %> CZK
+	</span>
+</div>
+<div class="work_off">
+	<span class="label"> <%= t("app.projects.prices.work_off") %>: </span>
+	<span class="value">
+		<%= '%.2f' % @user_relation.work_off.to_i %> CZK
+	</span>
+</div>
+<div class="earned">
+    <span class="label"> <%= t("app.projects.prices.earned") %>: </span>
+	<span class="value">
+	    <%= link_to '%.2f' % @user_relation.earned.to_i, project_project_user_relation_invoices_path(@user_relation.project, @user_relation) %> CZK
+	</span>
+</div>
+<div class="to_charge">
+    <span class="label"> <%= t('app.projects.prices.to_charge') %>: </span>
+	<span class="value">
+		<% if current_user.relation_to(@project).role? 'chief' %>
+			<%= link_to '%.2f' % @user_relation.to_charge, new_project_user_invoice_of_type_path(@user_relation.project, @user_relation, 'issue') %> CZK
+		<% else %>
+			<%= '%.2f' % @user_relation.to_charge.to_i %> CZK
+		<% end %>
+	</span>
+</div>
+
+<h4> <%= t("app.projects.tasks.index") %></h4>
+<div class="tasks">
+	<span class="label"> <%= t("app.projects.tasks.count.all") %>: </span>
+	<span class="taskscount">
+		<%= @user.count_all_tasks %>
+	</span>
+	<span class="label"> <%= t("app.projects.tasks.count.unfinished") %>: </span>
+	<span class="taskscount">
+		<%= @user.count_unfinished_tasks %>
+	</span>
+	<br />
+	<span class="label"> <%= t("app.projects.tasks.count.new") %>: </span>
+	<span class="taskscount">
+		<%= @user.count_tasks_by 'new' %>
+	</span>
+	<span class="label"> <%= t("app.projects.tasks.count.inprogress") %>: </span>
+	<span class="taskscount">
+		<%= @user.count_tasks_by 'inprogress' %>
+	</span>
+	<br />
+	<span class="label"> <%= t("app.projects.tasks.count.completed?") %>: </span>
+	<span class="taskscount">
+		<%= @user.count_tasks_by 'completed?' %>
+	</span>
+	<span class="label"> <%= t("app.projects.tasks.count.approved") %>: </span>
+	<span class="taskscount">
+		<%= @user.count_tasks_by 'approved' %>
+	</span>
+</div>
+

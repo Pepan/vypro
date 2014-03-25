@@ -1,0 +1,32 @@
+
+<% if (controller.controller_name == 'projects' or controller.controller_name == 'tasks') and can? :create, Task %>
+	<section class="actions">
+		<% unless @task.nil? %>
+			<%= link_to t("app.projects.tasks.new_task"), new_project_subtask_of_type_path(@task.project.id, @task.id, 'task') %> | 
+			<%= link_to t("app.projects.tasks.new_bug"), new_project_subtask_of_type_path(@task.project.id, @task.id, 'bug') %> | 
+			<%= link_to t("app.projects.tasks.new_idea"), new_project_subtask_of_type_path(@task.project.id, @task.id, 'idea') %>
+		<% else %>
+			<% unless @project.nil? %>
+				<%= link_to t("app.projects.tasks.new_task"), new_project_task_of_type_path(@project.id, 'task') %> | 
+				<%= link_to t("app.projects.tasks.new_bug"), new_project_task_of_type_path(@project.id, 'bug') %> | 
+				<%= link_to t("app.projects.tasks.new_idea"), new_project_task_of_type_path(@project.id, 'idea') %> 
+			<% end %>
+		<% end %>
+	</section>
+<% end %>
+
+<% if controller.controller_name == 'projects' %>
+	<table class="tasks" id="tree_container" data-path="<%= tree_project_tasks_path(@project.id) %>">
+		<tbody>
+			<tr>
+				<td>
+					<%= image_tag 'ajax-loader.gif' %>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<% else %>
+	<table class="tasks">
+		<%= render :partial=>'tasks/sub_tree', :locals=>{:tasks=>@tasks, :level=>0}  %>
+	</table>
+<% end %>

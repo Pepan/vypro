@@ -1,0 +1,41 @@
+<h1><%= t("page.title.project_user_relations.show") %></h1>
+
+<section class="attributes">
+    <div class="content">
+        <h2>
+			<span class="name">
+				<%= @user_relation.user.full_name %>
+			</span>
+			<span class="user">
+				( <%= @user_relation.user.email %> )
+			</span>
+        </h2>
+
+        <p>
+            <b><%= t('activerecord.attributes.project_user_relation.relation_type') %>:</b>
+            <%= @user_relation.relation_type.t_name %>
+        </p>
+
+        <h3><%= t('app.events.lasts') %></h3>
+        <%= render :partial => 'events/index' %>
+
+    </div>
+    <aside>
+        <h3><%= t('app.projects.tasks.sidebar.title') %></h3>
+        <%= render 'sidebar' %>
+    </aside>
+
+</section>
+
+<% if can? :manage, ProjectUserRelation or @user_relation.user_id == current_user.id %>
+    <h2> <%= t("app.projects.tasks.index") %></h2>
+    <%= render :partial => 'tasks/index' %>
+<% end %>
+
+<section class="actions">
+    <% if can? :edit, @user_relation %>
+        <%= link_to t('app.helpers.edit'), edit_project_user_relation_path(@user_relation.id) %> |
+    <% end %>
+
+    <%= link_to t("page.navig.project_user_relations.back"), project_user_relations_path %>
+</section>

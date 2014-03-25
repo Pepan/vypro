@@ -1,0 +1,17 @@
+<h1><%= t("page.title.notes.show") %></h1>
+
+<section class="attributes">
+	<span class="time"><%= l(@note.updated_at, :format => :short) %></span>
+
+	<span class="user"><%= @note.user.full_name %></span>
+
+	<div class="content" ><%= simple_format(@note.content) %></div>
+
+</section>
+
+<section class="actions">
+	<% if can? :edit, @task %>
+		<%= link_to t('app.helpers.edit'), edit_project_task_note_path(@note.task.project_id, @note.task_id, @note.id) %> | 
+	<% end %>
+	<%= link_to t("page.navig.notes.back"), project_task_path(@note.task.project_id, @note.task_id) %>	
+</section>

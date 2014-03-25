@@ -1,0 +1,8 @@
+<h1><%= t("page.title.invoices.edit") %></h1>
+
+<%= render 'form' %>
+
+<section class="actions">
+    <%= link_to t('page.navig.invoices.back'), project_project_user_relation_invoices_path(@invoice.project_user_relation.project, @invoice.project_user_relation_id) %>
+	<%= link_to t("app.helpers.show"), invoice_path(@invoice.id) %>
+</section>

@@ -1,0 +1,871 @@
+# Czech translations for Ruby on Rails (inspired by the Slovak localization - thanx to Jozef Fulop)
+# by Josef Chmel (chmel@jchsoft.cz)
+# encoding: utf-8
+cs:
+    # Date
+    date:
+        formats:
+            default: "%d.%m.%Y"
+            short: "%d %b"
+            long: "%d. %B %Y"
+            rfc822: "%e %b %Y"
+            compact: "%y%m%d"
+
+        day_names: [Neděle, Pondělí, Úterý, Středa, Čtvrtek, Pátek, Sobota]
+        abbr_day_names: [Ne, Po, Út, St, Čt, Pá, So]
+
+        month_names: [~, Leden, Únor, Březen, Duben, Květen, Červen, Červenec, Srpen, Září, Říjen, Listopad, Prosinec]
+        abbr_month_names: [~, Led, Úno, Bře, Dub, Kvě, Čvn, Čvc, Srp, Zář, Říj, Lis, Pro]
+        order: 
+          - :day
+          - :month
+          - :year
+
+    # Time
+    time:
+        formats:
+            default: "%a %d. %B %Y %H:%M %z"
+            short: "%d.%m. %H:%M"
+            long: "%A %d. %B %Y %H:%M"
+            compact: "%d.%m.%Y %H:%M"
+        am: "dopoledne"
+        pm: "odpoledne"
+
+    # ActiveSupport
+    support:
+        array:
+            words_connector: ", "
+            two_words_connector: " a "
+            last_word_connector: " a "
+        select:
+            prompt: "Prosím vyberte si."
+
+    # Numbers
+    number:
+        format:
+            precision: 3
+            separator: ","
+            delimiter: " "
+            significant: false
+            strip_insignificant_zeros: false
+
+        currency:
+            format:
+                unit: "Kč"
+                precision: 2
+                format: "%n %u"
+                separator: ","
+                delimiter: " "
+                significant: false
+                strip_insignificant_zeros: false
+
+        percentage:
+            format:
+                delimiter: ""
+
+        precision:
+            format:
+                delimiter: ""
+
+        human:
+            format:
+                precision: 1
+                delimiter: ""
+                significant: false
+                strip_insignificant_zeros: false
+
+            storage_units:
+                format: "%n %u"
+                units:
+                    byte:
+                        other: "B"
+                        one: "B"
+                    kb: "KB"
+                    mb: "MB"
+                    gb: "GB"
+                    tb: "TB"
+            decimal_units:
+                format: "%n %u"
+                units:
+                   unit: ""
+                   thousand: Tisíc
+                   million: Milión
+                   billion: Miliarda
+                   trillion: Trilión
+                   quadrillion: Quadrilión
+
+    # Distance of time ... helper
+    datetime:
+        prompts:
+            second: "Sekunda"
+            minute: "Minuta"
+            hour: "Hodina"
+            day: "Den"
+            month: "Měsíc"
+            year: "Rok"
+        distance_in_words:
+            half_a_minute: 'půl minutou'
+            less_than_x_seconds:
+                one: 'asi před sekundou'
+                other: 'asi před %{count} sekundami'
+            x_seconds:
+                one: 'sekundou'
+                other: '%{count} sekundami'
+            less_than_x_minutes:
+                one: 'před necelou minutou'
+                other: 'před ani ne %{count} minutami'
+            x_minutes:
+                one: 'minutou'
+                other: '%{count} minutami'
+            about_x_hours:
+                one: 'asi hodinou'
+                other: 'asi %{count} hodin'
+            x_days:
+                one: '24 hodinami'
+                other: '%{count} dny'
+            about_x_months:
+                one: 'asi měsícem'
+                other: 'asi %{count} měsíci'
+            x_months:
+                one: 'měsícem'
+                other: '%{count} měsíci'
+            about_x_years:
+                one: 'asi rokem'
+                other: 'asi %{count} roky'
+            over_x_years:
+                one: 'před víc jak rokem'
+                other: 'víc jak %{count} roky'
+            almost_x_years:
+                one:   "téměř rokem"
+                other: "téměř %{count} roky"
+
+    helpers:
+       select:
+          prompt: "Prosím vyberte si"
+
+       submit:
+          create: 'Vytvořit %{model}'
+          update: 'Aktualizovat %{model}'
+          submit: 'Uložit %{model}'
+          accouts:
+            new: "Založit účet"
+          user_web_page_relation:
+            create: "Přidat uživatele stránky"
+          item:
+            create: "Přidat sledovanou položku"
+          dom_action:
+            create: "Přidat akci"
+          time_sheet:
+            submit: "Odeslat"
+            create: "Odeslat"
+
+       
+       destroy:
+         title: "Mázání"
+         areyousure: "Jste si jistý, že chcete smazat tuto položku?"
+         delete: "Smazat"
+         keep: "Zachovat"
+         session: "Jste si jistý, že se chcete odhlásit?"
+         
+       label:
+         hp_message:
+           email: "Váš e-mail"
+           message: "Zpráva"
+         user[company]:
+           name: "Firma"
+           ident_no: "IČO"
+           address: "Fakturační adresa"
+         user:
+           email: "Email"
+           password: "Heslo"
+           remember_me: "Pamatovat si přihlášení"
+
+       duplicate:
+         areyousure: "Opravdu chcete toto duplikovat?"
+    errors:
+       format: "Položka: '%{attribute}', %{message}."
+       messages: &errors_messages
+            inclusion: "není v seznamu povolených hodnot"
+            exclusion: "je vyhrazeno pro jiný účel"
+            invalid: "není dobře vyplněn"
+            confirmation: "nebylo potvrzeno"
+            accepted: "musí být potvrzeno"
+            empty: "nesmí být prázdný/é"
+            blank: "je třeba vyplnit"
+            too_long: "je příliš dlouhá/ý (max. %{count} znaků)"
+            too_short: "je příliš krátký/á (min. %{count} znaků)"
+            wrong_length: "nemá správnou délku (očekáváno %{count} znaků)"
+            taken: "již databáze obsahuje"
+            not_a_number: "není číslo"
+            not_an_integer: "není je celé číslo"
+            greater_than: "musí být větší než %{count}"
+            greater_than_or_equal_to: "musí být větší nebo rovno %{count}"
+            equal_to: "musí být rovno %{count}"
+            less_than: "musí být méně než %{count}"
+            less_than_or_equal_to: "musí být méně nebo rovno %{count}"
+            odd: "musí být liché číslo"
+            even: "musí být sudé číslo"
+            
+    # ActiveRecord validation messages
+    activerecord:
+        errors:
+            template:
+               header:
+                  one:    "Změny na %{model} nebyly uložené. Vyskytla se 1 chyba"
+                  other:  "Změny na %{model} nebyly uložené. Vyskytlo se %{count} chyb"
+               body: "Vyskytly se problémy na následujících položkách:"
+
+            messages:
+               taken: "jste už použili"
+               record_invalid: "Validáce byla neuspešná: %{errors}"
+               <<: *errors_messages
+ 
+            full_messages:
+               format: "%{attribute} %{message}"
+            
+            models:
+              attachment:
+                attributes:
+                  file:
+                    carrierwave_processing_error: "Chyba při zpracování uploadu souboru (carrierwave)"
+        models:
+          company: "Společnost"
+          user: "Uživatel"
+          project: "Projekt"
+          task: "Úkol"
+          project_user_relation: "Vazba uživatele na projekt"
+          effort: "Práce"
+          note: "Poznámka"
+          event: "Událost"
+          sprint: "Sprint"
+          invoice: "Faktura"
+          annex: "Příloha"
+
+        attributes:
+          company:
+            name: "Název"
+            description: "Popis"
+            idnumber: "IČO"
+            address: "Adresa"
+          user:
+            title: "Titul"
+            firstname: "Jméno"
+            lastname: "Příjmení"
+            email: "Email"
+            password: "Heslo"
+            password_confirmation: "Potvrzení hesla"
+            remember_me: "Pamatovat si přihlášení"
+            current_sign_in_at: "Přihlásil se v"
+            IP: "IP"
+            company: "Společnost"
+            company_id: "Společnost"
+            user_role: "Role"
+            user_role_id: "Role"
+          project:
+            name: "Název"
+            description: "Popis"
+            company: "Firma"
+            company_id: "Firma"
+            work_started_at: "Datum uzavření objednávky a spuštění prací."
+            hour_price_czk: "Cena za hodinu práce"
+            target_price_czk: "Dohodnutá cena za projekt"
+          task:
+            name: "Název"
+            description: "Popis"
+            project: "Projekt"
+            project_id: "Projekt"
+            task_type: "Typ"
+            task_type_id: "Typ"
+            user: "Vytvřil"
+            user_id: "Vytvřil"
+            state_type: "Stav"
+            state_type_id: "Stav"
+            assigned_user: "Přiřazeno k"
+            assigned_user_id: "Přiřazeno k"
+            duration: "Předpokládané trvání"
+            duration_best: "Trvání v nejlepším případě"
+            duration_worst: "Trvání v nejhorším případě"
+            clientely_type_id: "Obchodní vazba"
+            priority_type_id: "Priorita"
+          project_user_relation:
+            project: "Projekt"
+            project_id: "Projekt"
+            user: "Uživatel"
+            user_id: "Uživatel"
+            relation_type: "Role v projektu"
+            relation_type_id: "Role v projektu"
+          effort:
+            name: "Název"
+            description: "Popis"
+            user: "Uživatel"
+            user_id: "Uživatel"
+            task: "Úkol"
+            task_id: "Úkol"
+            begin_at: "Začátek"
+            end_at: "Konec"
+            progress: "Nastav kolik je cca hotovo"
+          note:
+            content: "Obsah"
+            user: "Uživatel"
+            user_id: "Uživatel"
+            task: "Úkol"
+            task_id: "Úkol"
+          sprint:
+            tier: "Pořadí"
+            name: "Název"
+            project: "Projekt"
+            project_id: "Projekt"
+          invoice:
+            number: "VS / číslo"
+            sum_czk: "Suma"
+            created_at: "Založena"
+            invoice_type: "Typ"
+            invoice_type_id: "Typ"
+          annex:
+            name: "Název"
+            type: "Typ"
+            size: "Velikost"
+            source: "Soubor"
+
+    activemodel:
+        errors:
+            template:
+                header:
+                    one: "Při ukládání objektu %{model} došlo k chybám a nebylo jej možné uložit"
+                    other: "Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné jej uložit"
+                body: "Následující pole obsahují chybně vyplněné údaje:"
+
+    # other translations
+    log_mailer:
+      change:
+        subject: "Změna stavu"
+
+    unauthorized:
+      manage:
+        all: "Nemáte oprávnění k %{action} %{subject}."
+        user: "Nemáte oprávnění k spravování jiných uživatelských účtů."
+        company: "Nemáte oprávnění ke spravování jiných společností."
+      update:
+        company: "Nemáte oprávnění k úpravě společnosti."
+      new:
+        company: "Nemáte oprávnění ke tvorbě společnosti."
+      
+    contact_mailer:
+      hp_message:
+        subject: "Zpráva z webu"
+      
+    page:
+      title:
+        main: "Vyproj"
+        home: "Celkový přehled"
+        home_login: "Vyproj - vývojářský plánovač projektu"
+        old_browser: "Zastaralý prohlížeč"
+        demo_accounts: "Testovací účty"
+        page:
+          home: "Úvod"
+          help: "Nápověda"
+        users:
+          index: "Uživatelé"
+          new: "Nový uživatel"
+          edit: "Úprava uživatele"
+          update: "Úprava uživatele"
+          show: "Uživatel"
+        sessions:
+          new: "Přihlášení"
+        registrations:
+          new: "Registrace"
+          create: "Oprava registrace"
+        companies:
+          index: "Společnosti"
+          new: "Nová společnost"
+          edit: "Úprava společnosti"
+          show: "Společnost"
+        projects:
+          index: "Projekty"
+          new: "Nový projekt"
+          edit: "Úprava projektu"
+          show: "Projekt"
+          create: "Oprava projektu"
+          update: "Úprava projektu"
+        tasks:
+          index: "Úkoly"
+          new: "Nový úkol"
+          edit: "Úprava úkolu"
+          show: "Úkol"
+          update: "Úprava úkolu"
+          create: "Tvorba úkolu"
+          younger: "Úkoly zadané po datu uzavření objednávky"
+          moreover: "Úkoly nad rámec objednávky"
+        events:
+          index: "Události"
+        project_user_relations:
+          index: "Členové teamu"
+          new: "Nový člen teamu"
+          edit: "Úprava člena teamu"
+          show: "Člen teamu"
+        efforts:
+          index: "Práce"
+          new: "Nová práce"
+          edit: "Úprava práce"
+          show: "Práce"
+        notes:
+          index: "Poznámky"
+          new: "Nová poznámka"
+          edit: "Úprava poznámky"
+          show: "Poznámka"
+        sprints:
+          index: "Sprinty"
+          new: "Nový sprint"
+          edit: "Úprava sprintu"
+          show: "Sprint"
+        invoices:
+          new: "Nová faktura"
+          index: "Faktury"
+          incomes: "Přijaté"
+          issues: "Vydané"
+          create: "Tvorba faktury"
+          show: "Faktura"
+          edit: "Úprava faktury"
+        time_sheets:
+          index: "Pracovní výkaz"
+
+        annexes:
+          new: "Nová příloha"
+          show: "Příloha"
+      desc:
+        home: "Vývojářský plánovač projektu"
+        demo_note: "heslo je složeno z emailu jmeno@tester.cz jako jmenotester"
+        page:
+          home: "Vývojářský plánovač projektu"
+          help: "Nápověda k plánovači Vyproj"
+        users:
+          index: "Přehled registrovaných uživatelů společnosti"
+          new: "Formulář nového uživatele"
+          edit: "Formulář úpravy uživatele"
+          update: "Formulář úpravy uživatele"
+          show: "Zobrazení uživatele"
+        sessions:
+          new: "Formulář přihlášení uživatele. "
+        registrations:
+          new: "Registrace nového uživatele"
+          create: "Oprava registrace nového uživatele"
+        companies:
+          index: "Společnosti"
+          new: "Nová společnost"
+          edit: "Úprava společnosti"
+          show: "Společnost"
+        projects:
+          index: "Projekty"
+          new: "Nový projekt"
+          edit: "Úprava projektu"
+          show: "Projekt"
+          create: "Oprava parametru projektu"
+          update: "Úprava parametru projektu"
+        tasks:
+          index: "Úkoly"
+          new: "Nový úkol"
+          edit: "Úprava úkolu"
+          show: "Úkol"
+          update: "Úprava úkolu"
+          create: "Tvorba úkolu"
+          younger: "Seznam úkolů zadaných po datu uzavření objednávky"
+          moreover: "Seznam úkolů zadaných nad rámec objednávky"
+        events:
+          index: "Seznam událostí projektu"
+        project_user_relations:
+          index: "Členové teamu"
+          new: "Nový člen teamu"
+          edit: "Úprava člena teamu"
+          show: "Členo teamu"
+        efforts:
+          index: "Práce"
+          new: "Nová práce"
+          edit: "Úprava práce"
+          show: "Práce"
+        notes:
+          index: "Poznámky"
+          new: "Nová poznámka"
+          edit: "Úprava poznámky"
+          show: "Poznámka"
+        sprints:
+          index: "Sprinty"
+          new: "Nový sprint"
+          edit: "Úprava sprintu"
+          show: "Sprint"
+        invoices:
+          new: "Nová faktura"
+          index: "Faktury"
+          create: "Tvorba faktury"
+          show: "Faktura"
+          edit: "Úprava faktury"
+        annexes:
+          index: "Přílohy"
+          new: "Nová příloha"
+          edit: "Úprava přílohy"
+          show: "Příloha"
+        time_sheets:
+          index: "Pracovní výkaz za období"
+
+      navig:
+        home: "Úvod"
+        help: "Nápověda"
+        tohome: "Jít na úvodní stránku"
+        emails: "Emaily"
+        groups: "Skupiny"
+        designby: "design"
+        codedby: "provoz/realizace"
+        youarehere: "Cesta"
+        company:
+          back: "Zpět na společnost »"
+          new: "Přidat novou společnost"
+        companies:
+          back: " « Zpět na společnosti"
+          users:
+            back: "Zpět na uživatele společnosti »"
+            index: "Seznam uživatelů"
+        accounts:
+          new: "Založit účet"
+        web_page:
+          back: "Zpět na »"
+        project:
+          new: "+ Přidat nový projekt"
+          back: "« Zpět na projekty"
+          users:
+            index: "Seznam uživatelů"
+          tasks:
+            index: "Seznam úkolů"
+        projects:
+          back: " « Zpět na projekty"  
+          tasks:
+            csv: 'CSV export'
+        project_user_relations:
+          back: " « Zpět na členy teamu"       
+        tasks:
+          back: " « Zpět na projekt"
+          approve: "Schválit"
+        efforts:
+          back: " « Zpět na úkol"
+        notes:
+          back: " « Zpět na úkol"
+        invoices:
+          back: "Zpět na přehled"
+        annexes:
+          back: "« Zpět na úkol"
+      social:
+        mail: "e-mail"
+        twitter: "twitter"
+        facebook: "facebook"
+        linkedin: "linked in"
+      thumbnail: "zmenšenina"
+
+    app:
+      helpers:
+        edit: "Upravit"
+        show: "Zobrazit"
+        destroy: "Odstranit"
+        duplicate: "Duplikovat"
+      contact:
+        hp:
+          submit: "Odeslat"
+        message_sent: Zpráva byla úspěšně odeslána. Děkuji.
+      page:
+        home: "Vyproj"
+      user_roles:
+        guest: "Návštěvník"
+        admin: "Administrátor"
+        user: "Uživatel"
+
+      companies:
+        created: "Společnost byla úspěšně vytvořena"
+        updated: "Společnost byla úspěšně upravena"
+        users:
+          add_new: "Přidej"
+          full_name: "Jméno a příjmení"
+          new: "Nový uživatel"
+          created: "Uživatel byl úspěšně vytvořen"
+          updated: "Uživatel byl úspěšně upraven"
+          title: "Uživatel"
+          show: "Zobrazení uživatele"
+          index: "Uživatelé"
+          toindex: "Procházet seznam uživatelů »"
+          edit: "Úprava uživatele"
+          indexof: "Uživatelé z"
+      users:
+        login: "Přihlásit se"
+        logout: "Odhlásit"
+        register: "Registrovat se"
+        forgot_password: "Zapoměl jste své heslo?"
+        send_reset_password: "Zašlete mi instrukce pro obnovení hesla"
+        active: "Přihlášeno"
+        did_not_confirm_q: "Neobdržel jste potvrzující instrukce?"
+        resend: "Zaslat znovu"
+        title: "Titul"
+                        
+      projects:
+        index: "Projekty"
+        title: "Projekt"
+        new: "Nový projekt"
+        created: "Projekt byl úspěšně vytvořen"
+        updated: "Projekt byl úspěšně upraven"
+        show: "Projekt"
+        type:
+          fix: "Pevná cena"
+          agile: "Agilní cena"
+        sidebar: 
+          title: "Stav projektu"
+        state:
+          type:
+            preparation: "V přípravě"
+            inprogress: "Pracuje se"
+            completed: "Hotový"
+            blocked: "Blokovaný"
+            aborted: "Zrušený"
+        users:
+          control: "Údržba členů teamu"
+          index: "Uživatelé"
+          relation:
+            type:
+              developer: "Vývojář"
+              designer: "Designer"
+              chief: "Šéf"
+              brigade: "Brigádník"
+              client: "Klient"
+              tester: "Tester"
+            invoices:
+              index: "Faktury"
+              new: "Nová faktura"
+              created: "Faktura byla úspěšně vytvořena"
+              updated: "Faktura byla úspěšně upravena"
+              show: "Faktura"
+              type:
+                income: "Příjmová"
+                issue: "Výdajová"
+          relations:
+            created: "Vazba byla úspěšně vytvořena"
+            updated: "Vazba byla úspěšně upravena"
+        prices:
+          title: "Cena"
+          contracted: "Dohodnuto"
+          work_off: "Odpracováno"
+          earned: "Fakturováno"
+          to_charge: "Zbývá účtovat"
+          target_amount: "Cílová částka"
+          fund:
+            'true': "Prospěch"
+            'false': "Neprospěch"
+          profit:
+            'true': "Zisk"
+            'false': "Ztráta"
+          fix:
+            fund:
+              'true': "Rezerva"
+              'false': "Podhodnocení"
+            benefit:
+              'true': "Benefit"
+              'false': "Podhodnocení"
+          agile:
+            benefit:
+              'true': "Benefit"
+              'false': "Podhodnocení"
+          made: "Hotového za"
+          worth: "Odhad ceny"
+          valuation: "Odhad"
+        tasks:
+          created: "Úkol byl úspěšně vytvořen"
+          updated: "Úkol byl úspěšně upraven"
+          index: "Úkoly"
+          lasts: "Poslední úkoly"
+          indexof: "Úkoly projektu "
+          all: "Všechny úkoly"
+          new: "Nový úkol"
+          new_task: "Nový úkol"
+          new_bug: "Nová chyba"
+          new_idea: "Nový nápad"
+          newof: "Nový úkol projektu "
+          show: "Úkol"
+          edit: "Úprava úkolu"
+          destroy: "Odstranit"
+          titleof: "Úkol projektu "
+          timeusage: "Odpracováno na úkolu"
+          overaltimeusage: "Odpracováno celkem"
+          hours: "hodin"
+          subtasks: "Úkoly toho úkolu"
+          subtasks_duration: "Trvání podúkolů"
+          users_missing: "Nelze vytvořit úkol, protože k projektu nejsou přiřazeni uživatelé!"
+          duration_wrong: "- první (nejlepší varianta) musí být nižšší než nejhorší varianta odhadu času"
+          state:
+            index: "Stavy"
+            new: "Nový"
+            inprogress: "Pracuje se"
+            completed?: "Hotový?"
+            blocked: "Blokovaný"
+            approved: "Schválený"
+          type:
+            index: "Typy"
+            bug: "Chyba"
+            task: "Úkol"
+            idea: "Nápad"
+          efforts:
+            created: "Práce byla úspěšně vytvořena"
+            updated: "Práce byla úspěšně upravena"
+            index: "Odvedená práce"
+            new: "Nová práce"
+            newof: "Nová práce pro úkol"
+            show: "Práce"
+            edit: "Úprava práce"
+            interval: "Interval"
+            progress: "Pokročilost"
+          notes:
+            created: "Poznámka byla úspěšně vytvořena"
+            updated: "Poznámka byla úspěšně upravena"
+            index: "Poznámky k úkolu"
+            new: "Nová poznámka"
+            newof: "Nová poznámka pro úkol"
+            show: "Poznámka"
+            edit: "Úprava poznámky"
+          sidebar:
+            title: "Stav úkolu"
+          durations:
+            30mins: "30 minut"
+            1hour: "1 hodina"
+            2hours: "2 hodiny"
+            3hours: "3 hodiny"
+            4hours: "4 hodiny"
+            1day: "1 den"
+            2days: "2 dny"
+            3days: "3 dny"
+            4days: "4 dny"
+            1week: "1 týden"
+            2weeks: "2 týdny"
+          approved: "Úkol byl schválen."
+          approve:
+            areyousure: "Přejete si schválit tento úkol?"
+          count:
+            all: "Všechny"
+            unfinished: "Nedokončené"
+            remaining: "Neschválené"
+            new: "Nových"
+            inprogress: "Pracuje se"
+            completed?: "Hotové?"
+            blocked: "Blokované"
+            approved: "Schválené"
+            toapprove: "Ke schválení"
+            bug: "Chyb"
+          moreover:
+            title: "Úkoly nad rámec objednávky"
+            timeusage: "Odpracováno"
+            duration: "Předpokládané trvání"
+            count: "Počet"
+          moreovers: "Vícepráce"
+          youngers: "Po datu"
+          younger:
+            title: "Úkoly zadané po datu uzavření objednávky"
+            timeusage: "Odpracováno"
+            duration: "Předpokládané trvání"
+            count: "Počet"
+          clientely:
+            type:
+              none: "nejasné"
+              order: "objednané"
+              adaptation: "úprava"
+              moreover: "vícepráce"
+          priority:
+            type:
+              low: "nízká"
+              medium: "střední"
+              high: "vysoká"
+              urgent: "urgentní"
+            symbol:
+              low: "&frac14;"
+              medium: "&frac12;"
+              high: "&frac34;"
+              urgent: "!!"
+
+          worth: "Hodnota"
+          worth_user: "Hodnota"
+          worth_project: "Hodnota pro klienta"
+          profit: "Zisk"
+          annex:
+            created: "Příloha byla úspěšně přidána."
+            updated: "Příloha byla úspěšně upravena."
+          annexes:
+            index: "Přílohy k úkolu"
+            new: "Nová příloha"
+        events:
+          index: "Všechny události projektu"
+        sprints:
+          sidebar: 
+            title: "Stav sprintu"
+          created: "Sprint byl úspěšně vytvořen"
+          updated: "Sprint byl úspěšně upraven"
+          index: "Sprinty"
+          indexof: "Sprinty projektu "
+          new: "Nový sprint"
+          newof: "Nový sprint projektu "
+          show: "Sprint"
+          edit: "Úprava sprintu"
+          destroy: "Odstranit"
+
+        duplicated: "Projekt byl úspěšně duplikován."
+      events:
+        index: "Události"
+        lasts: "Poslední události"
+        new: "Nová událost"
+        show: "Událost: "
+        edit: "Úprava události. "
+        link: "Odkaz na kontext"
+        mark_as_viewed_confirm: "Označit vše jako přečtené?"
+        mark_as_viewed: "Označit vše jako přečtené"
+        
+      actions:
+        type:
+          new: "Nové"
+          create: "Vytvoření"
+          show: "Zobrazení"
+          update: "Aktualizace"
+          destroy: "Smazání"
+          index: "Výpis"
+          edit: "Úprava"
+          approve: "Schválení"
+          
+      class:
+        tasks: "Úkoly"
+
+      other:
+        by: " od "
+        entered_by: " zadal "
+        wrote: "napsal"
+        wrote_at: "napsal v"
+        write: "píše"
+        old_browser: "Omlouváme se, ale používáte více jak 4 roky starý prohlížeč. Použijte modernější z níže uvedených možností: "
+        left: "zbývá"
+        seconds: "vteřin"
+        from: "z"
+        state: 
+          label: "Stav"
+          ok: "OK"
+          error: "Chyba"
+        result:
+          label: "Výsledek"
+        form:
+          errors:
+            these: "Následujících"
+            stunting: "chyb brání provedení."
+            commmon_title: "Následující chyba brání provedení."
+
+      help:
+        title: "Nápověda"
+        page:
+          social:
+            mail: "Napištemi na e-mail"
+            twitter: "Sledujte na Twitteru"
+            facebook: "Komunikujte přes Facebook"
+            linkedin: "Připojte se na Linked in"
+          other:
+            something: "Aplikace napsaná v Ruby On Rails"
+        
+            
+            
+
+
+

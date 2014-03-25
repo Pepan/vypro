@@ -1,0 +1,16 @@
+<h1><%%= t("page.title.<%= plural_table_name %>.show") %></h1>
+
+<section class="attributes">
+<% attributes.each do |attribute| -%>
+	<p>
+		<b><%%= t('activerecord.attributes.<%= singular_table_name %>.<%= attribute.name %>') %>:</b>
+		<%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+	</p>
+
+<% end -%>
+</section>
+
+<section class="actions">
+	<%%= link_to t('app.helpers.edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>.id) %>
+	| <%%= link_to t("page.navig.<%= plural_table_name %>.back"), <%= index_helper %>_path %>	
+</section>

@@ -1,0 +1,5 @@
+<% unless task.nil? %>
+	<%= render :partial => 'tasks/path', :locals=>{:task=>task.task} unless task.task.nil? %>
+   <%= ' / ' unless task.task.nil? %>
+   <%= task.name %>
+<% end %>

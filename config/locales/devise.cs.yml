@@ -1,0 +1,46 @@
+cs:
+    errors:
+      messages:
+        not_found: "nebyl nalezen"
+        already_confirmed: "již potvrzen"
+        not_locked: "nebyl uzamčen"
+
+    devise:
+      sessions:
+        user:
+          signed_in: "Byl jste úspěšně přihlášen."
+          signed_out: "Byl jste úspěšně odhlášen."
+      failure:
+        unauthenticated: 'You need to sign in or sign up before continuing.'
+        unconfirmed: 'Musíte svůj účet potvrdit před tím, než bude možné se přihlásit.'
+        locked: 'Your account is locked.'
+        invalid: 'Špatné jméno nebo heslo.'
+        invalid_token: 'Invalid authentication token.'
+        timeout: 'Your session expired, please sign in again to continue.'
+        inactive: 'Your account was not activated yet.'
+        already_authenticated: "Již jste přihlášený."
+      passwords:
+        send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
+        updated: 'Your password was changed successfully. You are now signed in.'
+      confirmations:
+        send_instructions: 'Za pár minut obdržíte email s informacemi jak potvrdit svou registraci.'
+        confirmed: 'Váš účet byl úspešně potvrzen. Jste již i přihlášený.'
+      registrations:
+        signed_up: 'Vítejte! Byl jste úspěšně registrován. '
+        inactive_signed_up: 'Byl jste úspěšně registrován. Nicméně, nemůžete se přihlásit, protože váš účet zatím nebyl potvrzen odkazem z emailu.'
+        updated: 'You updated your account successfully.'
+        destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      unlocks:
+        send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+        unlocked: 'Your account was successfully unlocked. You are now signed in.'
+      omniauth_callbacks:
+        success: 'Successfully authorized from %{kind} account.'
+        failure: 'Could not authorize you from %{kind} because "%{reason}".'
+      mailer:
+        confirmation_instructions:
+          subject: 'Instrukce pro potvrzení'
+        reset_password_instructions:
+          subject: 'Instrukce pro obnovu hesla'
+        unlock_instructions:
+          subject: 'Unlock Instructions'
+

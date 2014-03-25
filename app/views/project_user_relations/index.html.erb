@@ -1,0 +1,9 @@
+<h1><%= t("page.title.project_user_relations.index") %></h1>
+
+<%= render :partial=>'index' %>
+
+<section class="actions">
+	<% if can? :create, ProjectUserRelation %>
+		<%= link_to t("page.title.project_user_relations.new"), new_project_user_relation_path(@project.id) %>
+	<% end %>
+</section>

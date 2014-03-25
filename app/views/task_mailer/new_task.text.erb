@@ -1,0 +1,10 @@
+Máte nový úkol "<%= @task.name.camelcase %>" v projektu "<%= @task.project.name.camelcase %>"
+<%= project_task_url(@task.project_id, @task.id, subdomain: 'vypro') %>
+
+Popis: <%= @task.description %>
+
+--------------
+Zadal: <%= @task.user.full_name %>, <%= @task.user.email %>
+Sprint: <%= @task.sprint.tier if @task.sprint %>
+Priorita: <%= @task.priority_type.t_name %>
+Odhad: <%= @task.duration_best.t_name+' - '+@task.duration_worst.t_name unless @task.duration_best.nil? or @task.duration_worst.nil?  %>

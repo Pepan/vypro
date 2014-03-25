@@ -1,0 +1,27 @@
+<h1><%= t("page.title.sprints.index") %></h1>
+
+<table>
+	<tr>
+	<th><%= t('activerecord.attributes.sprint.name') %></th>
+	<th><%= t('activerecord.attributes.sprint.tier') %></th>
+	<th><%= t('activerecord.attributes.sprint.project') %></th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @sprints.each do |sprint| %>
+	<tr>
+	<td><%= sprint.name %></td>
+	<td><%= sprint.tier %></td>
+	<td><%= sprint.project %></td>
+		<td><%= link_to t('app.helpers.show'), sprint_path(sprint.id) %></td>
+		<td><%= link_to t('app.helpers.edit'), edit_sprint_path(sprint.id) %></td>
+		<td><%= link_to t('app.helpers.destroy'), sprint_path(sprint.id), confirm: t('helpers.destroy.areyousure'), method: :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<section class="actions">
+	<%= link_to t("page.title.sprints.new"), new_sprint_path %>
+</section>

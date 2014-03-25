@@ -1,0 +1,12 @@
+<%= form_for(:user, :url => user_session_path, :html => { :class => 'new_user' }) do |f| %>
+	<div><%= f.label :email %><br />
+		<%= f.email_field :email %></div>
+
+	<div><%= f.label :password %><br />
+		<%= f.password_field :password %></div>
+
+	<div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+
+	<div><%= f.submit t('app.users.login') %></div>
+<% end %>
+<%= render :partial => "others/links", :locals=>{:resource_name=>'user'} %>

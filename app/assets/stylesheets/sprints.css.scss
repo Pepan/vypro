@@ -1,0 +1,34 @@
+// Place all the styles related to the Sprints controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin sprints_list {
+	table.sprints{
+		width: 100%;
+		tbody{
+			tr {
+				td {
+					vertical-align: top;
+					.progress {
+						width: 300px;
+						position: relative;
+						top: 2px;
+					}
+				}
+				td.tier {
+					width: 5%;
+				}
+				td.name {
+					width: 28%;
+				}
+				td.measure {
+					width: 320px;
+				}
+			}
+		}
+	}
+}
+
+body > div.main.projects.show > article > section.attributes > div.content {
+	
+	@include sprints_list
+}

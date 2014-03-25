@@ -1,0 +1,11 @@
+<% if !object.nil? and object.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= t('app.other.form.errors.these') %> <%= object.errors.count %> <%= t('app.other.form.errors.stunting') %></h2>
+
+		<ul>
+			<% object.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

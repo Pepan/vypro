@@ -1,0 +1,37 @@
+<div class="jumps">
+	<%= link_to '<|', project_task_path(@task.project_id, @tprev.id) unless @tprev.nil? %>
+	<%= link_to '|>', project_task_path(@task.project_id, @tnext.id) unless @tnext.nil? %>
+</div>
+<h1><%= @task.task_type.t_name.mb_chars.camelcase %></h1>
+
+<section class="attributes">
+	<div class="content">
+		<%= render 'show_content' %>
+	</div>
+	<aside>
+		<h3><%= t('app.projects.tasks.sidebar.title') %></h3>
+		<%= render 'sidebar' %>
+	</aside>
+</section>
+
+<h2> <%= t("app.projects.tasks.subtasks") %></h2>
+<%= render :partial => 'tasks/tree' %>
+
+<h2> <%= t("app.projects.tasks.efforts.index") %></h2>
+<%= render :partial => 'efforts/index' %>
+
+<h3> <%= t("app.projects.tasks.notes.index") %></h3>
+<%= render :partial => 'notes/index' %>
+
+<h3> <%= t('app.projects.tasks.annexes.index') %></h3>
+<%= render :partial => 'annexes/index' %>
+
+<section class="actions">
+	<% if can? :edit, @task %>
+		<%= link_to t('app.helpers.edit'), edit_project_task_path(@task.project_id, @task.id) %> | 
+	<% end %>
+	<% if can? :approve, @task %>
+		<%= link_to t("page.navig.tasks.approve"), approve_project_task_path(@task.project_id, @task.id), confirm: t('app.projects.tasks.approve.areyousure'), method: :put %> | 	
+	<% end %>
+	<%= link_to t("page.navig.tasks.back"), project_path(@task.project_id) %>
+</section>

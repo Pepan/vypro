@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: MyString
+  sum_czk: 1
+  invoice_type: 
+  project_user_relation: 
+
+two:
+  number: MyString
+  sum_czk: 1
+  invoice_type: 
+  project_user_relation: 

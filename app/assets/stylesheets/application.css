@@ -1,0 +1,194 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree .
+*/
+
+body {
+	margin: 0;
+	padding: 1ex;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 14px;
+	background-color: white;
+}
+
+body > header {
+	display: block;
+	width: 980px;
+	margin: 0;
+	color: gray;
+	position: relative;
+}
+body > header > nav {
+	display: block;
+}
+body > header > nav > ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+body > header > nav > ul > li {
+	display: inline-block;
+	padding: 1ex;
+}
+body > header > nav > ul > li > a {
+	color: inherit;
+}
+
+body > header > form.new_user {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+body > header > form.new_user > p {
+	display: inline-block;
+	padding: 4px;
+	margin: 0;
+}
+body > header > div.session {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 1ex;
+}
+body > header > div.session > span {
+	padding: 0 1ex 0 1ex;
+}
+body > header > div.session > span.user {
+
+}
+body > header > div.session > span.logout {
+
+}
+body > header > div.session > span > a {
+	color: inherit;	
+}
+
+div.main {
+	display: block;
+	width: 980px;
+	margin: 1em 0 1em 0;
+	border: 1px solid #E1E1E1;
+	padding: 1em;
+	box-shadow: 1px 1px 8px gray;
+	border-radius: 12px;
+}
+
+div.main h1, div.main h2 {
+	color: #E1E1E1;
+}
+div.main h1 {
+	font-size: 2em;
+	font-weight: bold;
+	margin: 1em 0 1em 0;
+}
+div.main h2 {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+div.main h3 {
+	font-size: 1.0em;
+	color: black;
+    margin: 1.5em 0 0.5em 0;
+}
+
+div.main h1>.user {
+	font-weight: normal;
+}
+
+div.main h1 a {
+	color: inherit;
+}
+
+div.main a {
+	color: inherit;
+	background-color: inherit;
+}
+div.main a:hover {
+	color: inherit;
+	background-color: inherit;
+}
+
+div.main nav a {
+	color: inherit;
+}
+
+body > div.main> div.breadcrumbs {
+	color: silver;
+}
+body > div.main> div.breadcrumbs a {
+	color: inherit;
+}
+
+body > div.main > article section.actions {
+	margin: 1em 0 1em 0;
+	color: gray;
+}
+body > div.main > article section.actions > a{
+	color: inherit;
+}
+body > div.main > article .service {
+	font-size: smaller;
+	color: gray;
+}
+
+body > footer {
+	display: block;
+	width: 980px;
+	margin: 0;
+	color: silver;
+	position: relative;
+	text-align: right;
+	font-size: smaller;
+}
+body > footer > nav {
+	display: block;
+}
+body > footer > nav > ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+body > footer > nav > ul > li {
+	display: inline-block;
+	padding: 1ex;
+}
+body > footer > nav > ul > li > a {
+	color: inherit;
+}
+
+/*-------------*/
+body > div.main > article > .flash {
+	margin: 2px 0 2px 0px;
+	padding: 0 0 0 0;
+}
+body > div.main > article > .flash.notice {
+	background: url(icons/small/check.png) top left no-repeat;
+	color: darkgreen;
+	text-shadow: 2px 2px 10px darkgreen;
+	padding-left: 20px;
+}
+body > div.main > article > .flash.alert {
+	background: url(icons/small/error.png) top left no-repeat;
+	color: darkred;
+	text-shadow: 2px 2px 20px darkred;
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+/*----------------------*/
+div.progress {
+	background-color: silver;
+	padding: 1px;
+	height: 1em;
+	display: inline-block;
+	position: relative;
+	top: 0.5ex;
+}
+div.progress>.bar {
+	background-color: green;
+	height: 1em;
+	min-width: 1%;
+}

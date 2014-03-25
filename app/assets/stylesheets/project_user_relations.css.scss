@@ -1,0 +1,116 @@
+// Place all the styles related to the ProjectUserRelations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body > div.main.project_user_relations.show > article {
+	section.attributes {
+		word-spacing: -1em;
+		div.content, aside {
+			display: inline-block;
+			word-spacing: normal;
+			vertical-align: top;
+		}
+		div.content {
+			width: 70%;
+			padding-right: 1%;
+			h2{
+				margin: 0 0 1ex 0;
+				color: black;
+				.user {
+					color: #E1E1E1;
+					font-size: smaller;
+				}
+				.sprint {
+					color: gray;
+					font-size: smaller;
+					text-transform: lowercase;
+				}
+			}
+			div.description {
+				color: gray;
+			}
+		}
+		aside {
+			width: 29%;
+			h3{
+				margin: 0 0 1ex 0;
+			}
+			.headway {
+				word-spacing: -1em;
+				.label, .progress {
+					display: inline-block;
+					word-spacing: normal;
+				}
+				.label {
+					width: 29%;
+				}
+				.progress {
+					width: 70%;
+				}
+			}
+			.work_off {
+				.value {
+					color: gray;
+				}
+			}
+			.earned {
+				.value {
+					font-weight: bold;
+				}
+			}
+
+			.state.new {
+				background-color: #e6ffe6;
+				color: green;
+			}
+			.state.inprogress {
+				background-color: #f2f2ff;
+				color: blue;
+			}
+			.state.completed {
+				background-color: #ffffcc;
+				color: #999900;
+			}
+			.state.bug {
+				background-color: #ffcccc;
+				color: red;
+			}
+			.state.approved {
+				background-color: inherit;
+				text-decoration: line-through;
+			}
+			.duration {
+				margin-top: 1em;
+				color: gray;
+			}
+		}
+	}
+	
+/*	section.notes {
+		figure.note {
+			$headcolor: gray;
+			margin: 1ex 0 1ex 0;
+			padding: 1ex;
+			background-color: #f3f3f3;
+			>.time {
+				color: $headcolor;
+			}
+			>.user {
+				color: $headcolor;
+			}
+			
+			>.content {
+				font-size: smaller;
+				background-color: white;
+				>p {
+					margin: 0 0 1em 0;
+					font-size: inherit;
+					padding: 1ex;
+				}
+				
+			}
+		}
+	}*/
+	
+	//@include efforts_list
+}

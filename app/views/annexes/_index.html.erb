@@ -1,0 +1,20 @@
+<% if controller.controller_name == 'tasks' and can? :create, Annex  %>
+    <section class="actions">
+        <%= link_to t('app.projects.tasks.annexes.new'), new_project_task_annex_path(@task.project_id, @task.id) %>
+    </section>
+<% end %>
+
+<section class="annexs">
+    <% @annexes.each do |annex| %>
+        <figure class="annex" >
+            <span class="time"><%= l(annex.updated_at, :format => :short) %></span>
+
+            <span class="content" ><%= link_to annex.name, annex.source.url %></span>
+
+            <span class="service">
+                <%= link_to t('app.helpers.edit'), edit_project_task_annex_path(@task.project_id, @task.id, annex.id) if can? :edit, annex %>
+                <%= link_to t('app.helpers.destroy'), project_task_annex_path(@task.project, @task.id, annex.id), :confirm => t('helpers.destroy.areyousure'), :method => :delete  if can? :destroy, annex %>
+            </span>
+        </figure>
+    <% end %>
+</section>

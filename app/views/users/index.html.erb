@@ -1,0 +1,25 @@
+<h1><%= t("page.title.users.index") %></h1>
+
+<table>
+	<tr>
+		<th><%= t('activerecord.attributes.user.firstname') %></th>
+		<th><%= t('activerecord.attributes.user.lastname') %></th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.firstname %></td>
+			<td><%= user.lastname %></td>
+			<td><%= link_to t('app.helpers.show'), company_user_path(user.company_id, user.id) %></td>
+			<td><%= link_to t('app.helpers.edit'), edit_company_user_path(user.company_id, user.id) %></td>
+			<td><%= link_to t('app.helpers.destroy'), user_path(user.id), confirm: t('helpers.destroy.areyousure'), method: :delete %></td>
+		</tr>
+	<% end %>
+</table>
+
+<section class="actions">
+	<%= link_to t("page.title.users.new"), new_company_user_path(@user.company_id) %>
+</section>

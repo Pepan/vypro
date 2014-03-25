@@ -1,0 +1,8 @@
+<h1><%= t("page.title.project_user_relations.edit") %></h1>
+
+<%= render 'form' %>
+
+<section class="actions">
+	<%= link_to t("page.navig.project_user_relations.back"), project_user_relations_path(@user_relation.project_id) %> |
+	<%= link_to t("app.helpers.show"), project_user_relation_path(@user_relation.id) %>
+</section>

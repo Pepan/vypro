@@ -1,0 +1,32 @@
+<%= form_for(@event) do |f| %>
+	<%= render :partial=>'others/form_errors', :locals=>{:object=>f.object}  %>
+
+			<div class="field">
+			<%= f.label :origin_type %><br />
+			<%= f.text_field :origin_type %>
+		</div>
+			<div class="field">
+			<%= f.label :user %><br />
+			<%= f.text_field :user %>
+		</div>
+			<div class="field">
+			<%= f.label :target_class %><br />
+			<%= f.text_field :target_class %>
+		</div>
+			<div class="field">
+			<%= f.label :viewed %><br />
+			<%= f.check_box :viewed %>
+		</div>
+			<div class="field">
+			<%= f.label :data_id %><br />
+			<%= f.number_field :data_id %>
+		</div>
+			<div class="field">
+			<%= f.label :action_type %><br />
+			<%= f.text_field :action_type %>
+		</div>
+		
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

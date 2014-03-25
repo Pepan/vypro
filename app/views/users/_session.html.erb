@@ -1,0 +1,7 @@
+<div class="session">
+	<% if user_signed_in? %>
+		<span class="user"><%= t('page.title.users.show') %>: <%= link_to current_user.full_name, company_user_path(current_user.company.id, current_user.id) %></span>
+		<span class="logout"><%= link_to t('app.users.logout'), destroy_user_session_path, :confirm => t('helpers.destroy.session'), :method=>:delete %></span>
+	<% end %>
+</div>
+

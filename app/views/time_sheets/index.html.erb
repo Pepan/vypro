@@ -1,0 +1,14 @@
+<h1><%= t 'page.title.time_sheets.index' %></h1>
+<section class="filter">
+	<%= form_for @time_sheet, remote: true do |f| %>
+		<span class="period">
+			<%= f.date_select :from %> -
+		  <%= f.date_select :to %>
+		  <%= f.collection_select :company_id, present_user.created_companies, :id, :to_s, include_blank: true %>
+		  <%= f.collection_select :worker_id, present_user.fellows, :id, :to_s, include_blank: true %>
+		  <%= f.submit %>
+		</span>
+	<% end %>
+</section>
+
+<%= render partial: 'index_data' %>

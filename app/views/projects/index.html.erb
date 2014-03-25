@@ -1,0 +1,33 @@
+<h1><%= t("page.title.projects.index") %></h1>
+
+<table>
+	<tbody>
+	<% @projects.each do |project| %>
+		<tr>
+			<td class="attributes">
+				<h3>
+					<%= link_to project.name, project %>
+					<span class="company">
+						<%= t('app.other.by') %>
+						<%= link_to project.company.name, company_path(project.company.id) %>
+					</span>
+				</h3>
+
+				<div class="description"><%= simple_format(project.description) %></div>
+			</td>
+			<td>
+				<%  if can? :edit, project %>
+					<%= link_to t('app.helpers.edit'), edit_project_path(project.id) %>
+				<% end %>
+				<%  if can? :destroy, project %>
+					<%= link_to t('app.helpers.destroy'), project_path(project.id), confirm: t('helpers.destroy.areyousure'), method: :delete %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+
+<section class="actions">
+	<%= link_to t("page.title.projects.new"), new_project_path %>
+</section>

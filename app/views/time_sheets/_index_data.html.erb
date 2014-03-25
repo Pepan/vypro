@@ -1,0 +1,14 @@
+<section class="data">
+  <% @companies.each do |company| %>
+		<% if company.efforts.of_period(@time_sheet.from, @time_sheet.to).of_user(@time_sheet.worker_id).count > 0 %>
+    <figure class="company">
+      <figcaption><%= company %></figcaption>
+      <section>
+        <% company.projects.includes(:tasks).each do |project| %>
+          <%= render partial: 'time_sheets/index/project', locals: {project: project} %>
+        <% end %>
+      </section>
+    </figure>
+		<% end %>
+  <% end %>
+</section>

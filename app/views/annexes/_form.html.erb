@@ -1,0 +1,12 @@
+<%= form_for [@annex.task.project, @annex.task, @annex] do |f| %>
+	<%= render :partial=>'others/form_errors', :locals=>{:object=>f.object}  %>
+
+		<div class="field">
+			<%= f.label :source %><br />
+			<%= f.file_field :source %>
+		</div>
+		
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

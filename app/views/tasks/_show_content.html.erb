@@ -1,0 +1,26 @@
+<h2>
+	<span class="name">
+		<%= @task.name.camelcase %>
+	</span>
+
+	<span class="user">
+		-<%= t('app.other.entered_by') %>
+		<%= link_to @task.user.full_name, user_path(@task.user) %>
+	</span>
+	<% unless @task.sprint.nil? %>
+		<span class="sprint">
+			<span class="user">,</span>
+			<%= link_to t('page.title.sprints.show')+' '+@task.sprint.tier.to_s, project_sprint_path(@task.project_id, @task.sprint_id) %>.
+		</span>
+	<% end %>
+	<% unless @task.clientely_type_id.nil? %>
+		<span class="clientely_type <%= @task.clientely_type.code %> ">
+			<%= @task.clientely_type.t_name %>
+		</span>
+	<% end %>
+</h2>
+
+<div class="description">
+	<%= simple_format(@task.description) %>
+</div>
+

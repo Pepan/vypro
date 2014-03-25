@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= t('page.title.old_browser') %></title>
+	</head>
+	<body>
+		<h1><%= t('page.title.main') %></h1>
+		<small><%= request.user_agent %></small>
+		<big><strong><%= t('app.other.old_browser') %></strong></big><br />
+		<ul>
+			<li><a href="http://www.google.com/chrome/">Google Chrome</a></li>
+			<li><a href="http://www.opera.com/download/">Opera</a></li>
+			<li><a href="http://www.mozilla.com/cs/firefox/">Firefox</a></li>
+			<li><a href="http://windows.microsoft.com/cs-CZ/internet-explorer/products/ie/home">Internet Explorer 9</a></li>
+		</ul>
+		<%= link_to t('page.navig.tohome'), root_path %>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin tasks_list {
+	table.events{
+		width: 100%;
+		tbody{
+			tr.create {
+				color: #004a00;
+			}
+			tr.update {
+				color: #00005b;
+			}
+			tr.approve {
+				color: #8a8a00;
+			}
+			tr.destroy {
+				color: inherit;
+				text-decoration: line-through;
+			}
+			tr.notes {
+				font-style: italic;
+			}
+			tr {
+				td {
+					vertical-align: top;
+					.description {
+						font-size: smaller;
+						color: gray;
+					}
+					padding-right: 1ex;
+				}
+				td.type {
+					width: 7%;
+				}
+				td.originator {
+					width: 10%;
+				}
+				td.name {
+				}
+				td.time {
+					width: 13%;
+					font-size: smaller;
+					color: gray;
+				}
+				td.user {
+					width: 14%;
+					color: gray;
+					font-size: smaller;
+				}
+			}
+		}
+	}
+}
+
+body > div.main.page.home > article > .infos > section.actual {
+	@include tasks_list
+}
+body > div.main.projects.show > article > section.attributes > div.content {
+	h3 {
+		color: #E1E1E1;
+		margin: 1.5em 0 1ex 0
+	}
+	table.events{
+		tbody{
+			tr {
+				td {
+					font-size: smaller;
+				}
+			}
+		}
+	}
+	> section.actions {
+		margin-top: 0;
+		font-size: smaller;
+	}
+	@include tasks_list
+}
+
+body > div.main.sprints.show > article > section.attributes > div.content {
+	@include tasks_list
+}
+
+body > div.main.events.index > article {
+	@include tasks_list
+}
+
+body > div.main.project_user_relations.show > article > section.attributes > div.content {
+	h3 {
+		color: #E1E1E1;
+		margin: 1.5em 0 1ex 0
+	}
+	table.events{
+		tbody{
+			tr {
+				td {
+					font-size: smaller;
+				}
+			}
+		}
+	}
+	@include tasks_list
+}

@@ -1,0 +1,12 @@
+<%= form_for [@note.task.project, @note.task, @note] do |f| %>
+	<%= render :partial=>'others/form_errors', :locals=>{:object=>f.object}  %>
+
+	<div class="field">
+		<%= f.label :content %><br />
+		<%= f.text_area :content, :size => "80x12"  %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

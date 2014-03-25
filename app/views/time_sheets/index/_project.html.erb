@@ -1,0 +1,17 @@
+<% if project.efforts.of_period(@time_sheet.from, @time_sheet.to).of_user(@time_sheet.worker_id).count > 0 %>
+
+  <figure class="project">
+    <figcaption>
+      <%= project %>
+	    <% time_usage = project.time_usage_limited(@time_sheet.from, @time_sheet.to, @time_sheet.worker_id) %>
+			<%= project.work_off time_usage%> CZK / <%= (time_usage/3600).round(1) %><%= t('app.projects.tasks.hours') %>,
+      <%= project.efforts.of_period(@time_sheet.from, @time_sheet.to).of_user(@time_sheet.worker_id).count %> pr.
+    </figcaption>
+    <section>
+      <% project.tasks.with_work.includes(:efforts).each do |task| %>
+        <%= render partial: 'time_sheets/index/task', locals: {task: task} %>
+      <% end %>
+    </section>
+  </figure>
+
+<% end %>

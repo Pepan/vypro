@@ -1,0 +1,18 @@
+<h1><%= t("page.title.sprints.show") +' '+ @sprint.tier.to_s %>.</h1>
+
+<section class="attributes">
+	<div class="content">
+		<%= render 'show_content' %>
+	</div>
+	<aside>
+		<h2><%= t('app.projects.sprints.sidebar.title') %></h2>
+		<%= render 'sidebar' %>
+	</aside>
+</section>
+
+<h2> <%= t("app.projects.tasks.index") %></h2>
+<%= render :partial => 'tasks/index' %>
+
+<section class="actions">
+	<%= link_to t("page.navig.sprints.back"), project_path(@sprint.project_id) %>
+</section>

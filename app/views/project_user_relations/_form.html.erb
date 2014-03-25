@@ -1,0 +1,23 @@
+<%= form_for(@user_relation, :url => (@user_relation.id.nil? ? project_user_relations_path(@user_relation.project_id) : project_user_relation_path(@user_relation.project_id, @user_relation.id))) do |f| %>
+	<%= render :partial=>'others/form_errors', :locals=>{:object=>f.object}  %>
+
+	<div class="field">
+		<%= f.label :user %><br />
+		<%= f.select :user_id, current_user.fellows.collect {|p| [p.full_name, p.id ]}, {:include_blank => true } %>
+	</div>
+	<div class="field">
+		<%= f.label :relation_type %><br />
+		<%= f.select :relation_type_id, RelationType.all.collect {|p| [p.t_name, p.id ]}, {:include_blank => true } %>
+	</div>
+
+	<% if current_user.relation_to(@user_relation.project).role? 'chief' %>
+		<div class="field">
+			<%= f.label :hour_price_czk %><br />
+			<%= f.number_field :hour_price_czk %> CZK
+		</div>
+	<% end %>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

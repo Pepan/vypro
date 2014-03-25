@@ -1,0 +1,34 @@
+<%= form_for [@user.company, @user] do |f| %>
+	<%= render :partial=>'others/form_errors', :locals=>{:object=>f.object}  %>
+
+	<div class="field">
+		<%= f.label :firstname %><br />
+		<%= f.text_field :firstname %>
+	</div>
+	<div class="field">
+		<%= f.label :lastname %><br />
+		<%= f.text_field :lastname %>
+	</div>
+
+	<div class="field">
+		<%= f.label :email %><br />
+		<%= f.text_field :email %>
+	</div>
+	<% if @user.id.nil? %>
+		<div class="field">
+			<%= f.label :password %><br />
+			<%= f.text_field :password %>
+		</div>
+	<% end %>
+
+	<% if current_user.role? 'admin' %>
+		<div class="field">
+			<%= f.label :user_role_id %><br />
+			<%= f.select :user_role_id, UserRole.all.collect {|p| [p.t_name, p.id ]}, {:include_blank => true } %>
+		</div>
+	<% end %>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

@@ -1,0 +1,34 @@
+<h1><%= t("page.title.invoices.show") %></h1>
+
+<section class="attributes">
+	<p>
+		<b><%= t('activerecord.attributes.invoice.number') %>:</b>
+		<%= @invoice.number %>
+	</p>
+
+	<p>
+		<b><%= t('activerecord.attributes.invoice.sum_czk') %>:</b>
+		<%= @invoice.sum_czk %>
+	</p>
+
+	<p>
+		<b><%= t('activerecord.attributes.invoice.invoice_type') %>:</b>
+		<%= @invoice.invoice_type %>
+	</p>
+
+	<p>
+		<b><%= t('activerecord.models.user') %>:</b>
+		<%= @invoice.project_user_relation.user.full_name %>
+	</p>
+
+    <p>
+        <b><%= t('activerecord.attributes.invoice.created_at') %>:</b>
+        <%= l(@invoice.created_at, :format => :compact) %>
+    </p>
+
+</section>
+
+<section class="actions">
+	<%= link_to t('app.helpers.edit'), edit_invoice_path(@invoice.id) %>
+	| <%= link_to t('page.navig.invoices.back'), project_project_user_relation_invoices_path(@invoice.relation.project, @invoice.relation) %>
+</section>

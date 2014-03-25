@@ -1,0 +1,30 @@
+<% if controller.controller_name == 'tasks' and can? :create, Effort  %>
+	<section class="actions">
+		<%= link_to t("app.projects.tasks.efforts.new"), new_project_task_effort_path(@task.project_id, @task.id) %>
+	</section>
+<% end %>
+
+<table class="efforts">
+	<% @efforts.each do |effort| %>
+		<tr class="reference" data-ref="<%=  project_task_effort_path(@task.project_id, effort.task_id, effort.id)  %>" >
+			<td class="time" rowspan="2"><%= l(effort.begin_at, :format => :short) %> - <%= l(effort.end_at, :format => :short) %></td>
+
+			<td class="name"><%= effort.name %></td>
+
+			<td class="headway"><div class="progress"> <div class="bar" style="width:<%= effort.progress.to_s+'%' %>"></div></div></td>
+
+			<td class="user" rowspan="2"><%= link_to effort.user.full_name, effort.user %></td>
+
+			<td class="service" rowspan="2">
+				<%= link_to t('app.helpers.edit'), edit_project_task_effort_path(@task.project_id, @task.id, effort.id) if can? :edit, effort %>
+				<%= link_to t('app.helpers.destroy'), project_task_effort_path(@task.project, @task.id, effort.id), :confirm => t('helpers.destroy.areyousure'), :method => :delete  if can? :destroy, effort %>
+			</td>
+		</tr>
+		<tr class="">
+			<td class="qtip" data-qtip="<%= description_project_task_effort_path(@task.project_id, @task.id, effort.id) %>" colspan="2">
+				<div class="description" ><%= effort.description[0..80] %><%= '...' if effort.description.length>80 %> </div>
+			</td>
+		</tr>
+	<% end %>
+</table>
+

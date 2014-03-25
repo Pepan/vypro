@@ -1,0 +1,23 @@
+<h1><%= t("page.title.annexes.index") %></h1>
+
+<table>
+	<tr>
+	<th><%= t('activerecord.attributes.annex.source') %></th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @annexes.each do |annex| %>
+	<tr>
+	<td><%= annex.source %></td>
+		<td><%= link_to t('app.helpers.show'), annex_path(annex.id) %></td>
+		<td><%= link_to t('app.helpers.edit'), edit_annex_path(annex.id) %></td>
+		<td><%= link_to t('app.helpers.destroy'), annex_path(annex.id), confirm: t('helpers.destroy.areyousure'), method: :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<section class="actions">
+	<%= link_to t("page.title.annexes.new"), new_annex_path %>
+</section>

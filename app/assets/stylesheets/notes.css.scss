@@ -1,0 +1,32 @@
+// Place all the styles related to the Notes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body > div.main.tasks.edit > article > form > div.field > input {
+}
+
+body > div.main.notes.show > article > section.attributes {
+	$headcolor: gray;
+	margin: 1ex 0 1ex 0;
+	padding: 1ex;
+	background-color: #f3f3f3;
+	word-spacing: normal;
+	>.time {
+		color: $headcolor;
+	}
+	>.user {
+		color: $headcolor;
+	}
+	
+	>.content {
+		display: block;
+		font-size: smaller;
+		background-color: white;
+		>p {
+			margin: 0 0 1em 0;
+			font-size: inherit;
+			padding: 1ex;
+		}
+		
+	}
+}

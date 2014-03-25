@@ -1,0 +1,31 @@
+<table class="projects">
+
+	<% @projects.each do |project| %>
+		<tr class="reference" data-href="<%=  project_path(project)  %>" >
+
+			<td class="content" rel="<%= description_project_path(project) %>">
+				<h3>
+					<%= link_to project.name, project_path(project.id)%>
+					<span class="company">
+						<%= t('app.other.by') %>
+						<%= link_to project.company.name, company_path(project.company.id) %>
+					</span>
+				</h3>
+
+			</td>
+
+			<td>
+				<%  if can? :edit, project %>
+					<%= link_to t('app.helpers.edit'), edit_project_path(project.id) %>
+				<% end %>
+				<%  if can? :destroy, project %>
+					<%= link_to t('app.helpers.destroy'), project_path(project.id), confirm: t('helpers.destroy.areyousure'), method: :delete %>
+				<% end %>
+		</tr>
+	<% end %>
+		
+</table>
+
+<section class="actions">
+	<%= link_to t("page.title.projects.new"), new_project_path %>
+</section>

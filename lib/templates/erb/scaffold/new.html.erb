@@ -1,0 +1,8 @@
+<h1><%%= t("page.title.<%= plural_table_name %>.new") %></h1>
+
+<%%= render 'form' %>
+
+<section class="actions">
+	<%%= link_to t("page.navig.<%= plural_table_name %>.back"), <%= index_helper %>_path %>
+</section>
+

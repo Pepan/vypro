@@ -1,0 +1,338 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin clientely {
+	.clientely_type {
+		color: white;
+		font-size: xx-small;
+		text-transform: lowercase;
+		padding: 0 1ex 0 1ex;
+		display: inline-block;
+		&.moreover {
+			background-color: #7b1212;
+		}
+		&.none {
+			background-color: #ffea02;
+			color: black;
+		}
+		&.order{
+			background-color: #008000;
+		}
+		&.adaptation{
+			background-color: #005900;
+		}
+	}
+
+}
+
+
+@mixin tasks_list {
+	table.tasks{
+		width: 100%;
+		tbody{
+			tr.new {
+				background-color: #e6ffe6;
+			}
+			tr.inprogress {
+				background-color: #f2f2ff;
+			}
+			tr.completed {
+				background-color: #ffffcc;
+			}
+			tr.bug {
+				background-color: #ffcccc;
+			}
+			tr.idea {
+				background-color: #e8e8ff;
+			}
+			tr.approved {
+				background-color: inherit;
+				text-decoration: line-through;
+				td {
+					.progress {
+						.bar {
+							background-color: #004a00;
+						}
+					}
+				}
+			}
+			tr.blocked {
+				color: white;
+				background-color: black;
+			}
+			tr.alien {
+				font-style: italic;
+				color: gray;
+			}
+			tr.level_1 {
+				td.name {
+					padding-left: 2em;
+					font-size: 11px;
+				}
+			}
+			tr.level_2 {
+				td.name {
+					padding-left: 4em;
+					font-size: 11px;
+				}
+			}
+			tr.level_3 {
+				td.name {
+					padding-left: 6em;
+					font-size: 10px;
+				}
+			}
+			tr.level_4 {
+				td.name {
+					padding-left: 6.5em;
+					font-size: 10px;
+				}
+			}
+			tr.level_5 {
+				td.name {
+					padding-left: 7em;
+					font-size: 10px;
+				}
+			}
+			tr.level_6  {
+				td.name {
+					padding-left: 7.5em;
+					font-size: 10px;
+				}
+			}
+			tr.level_7  {
+				td.name {
+					padding-left: 8em;
+					font-size: 10px;
+				}
+			}
+			tr.level_8  {
+				td.name {
+					padding-left: 8.5em;
+					font-size: 10px;
+				}
+			}
+			tr.level_9  {
+				td.name {
+					padding-left: 9em;
+					font-size: 10px;
+				}
+			}
+			tr {
+				td {
+					vertical-align: top;
+					.progress {
+						width: 200px;
+						position: relative;
+						top: 2px;
+					}
+					.description {
+						font-size: smaller;
+						color: gray;
+
+					}
+					.duration {
+						font-size: smaller;
+						&.over_long {
+							color: #af1b00;
+							//background-color: #ffcc00;
+						}
+					}
+
+					&.qtip {
+						> img {
+							float: right;
+						}
+					}
+
+					@include clientely;
+				}
+				td.type {
+					width: 6%;
+					color: gray;
+				}
+				td.state {
+					width: 10%;
+					color: gray;
+				}
+				td.new {
+					color: green;
+				}
+				td.inprogress {
+					color: blue;
+				}
+				td.completed {
+					color: #999900;
+				}
+				td.bug {
+					color: red;
+				}
+				td.name {
+					width: 40%;
+					> .path {
+						font-size: smaller;
+						color: gray;
+					}
+				}
+				td.content {
+					width: 42%;
+				}
+				td.user {
+					width: 10%;
+				}
+				td.sprint {
+					color: gray;
+					font-size: smaller;
+					text-transform: lowercase;
+				}
+				td.priority{
+					&.low {
+						background-color: #f2f2ff;
+						color: gray;
+					}
+					&.medium {
+						color: gray;
+					}
+					&.high {
+						background-color: orange;
+					}
+					&.urgent {
+						background-color: red;
+					}
+				}
+			}
+		}
+	}
+}
+
+body > div.main.show > article {
+	>section.attributes {
+		word-spacing: -1em;
+		div.content, aside {
+			display: inline-block;
+			word-spacing: normal;
+			vertical-align: top;
+		}
+		p{
+			word-spacing: normal;
+		}
+		div.content {
+			width: 70%;
+			padding-right: 1%;
+			h2{
+				margin: 0 0 1ex 0;
+				color: black;
+				.state {
+					color: #E1E1E1;
+				}
+				.company {
+					color: #E1E1E1;
+				}
+			}
+			div.description {
+				color: gray;
+			}
+		}
+		aside {
+			width: 29%;
+			h2{
+				margin: 0 0 1ex 0;
+			}
+			h4{
+				margin: 1em 0 0 0;
+			}
+			h4:first-letter {
+				text-transform: capitalize;
+			}
+			.progress {
+				width: 90%;
+			}
+			.tasks {
+			}
+			.profit {
+				>.benefit {
+					color: black;
+					font-weight: bold;
+				}
+				>.loss {
+					color: red;
+					font-weight: bold;
+				}
+			}
+			.benefit {
+				>.benefit {
+					color: black;
+					font-weight: bold;
+				}
+				>.loss {
+					color: red;
+					font-weight: bold;
+				}
+			}
+			.users {
+				font-size: smaller;
+				color: gray;
+				> table {
+					margin-bottom: 1em;
+					th {
+						text-align: left;
+						padding-right:1em;
+					}
+					td {
+						text-align: left;
+						padding-right:1em;
+						font-size: inherit;
+					}
+				}
+				> a.link {
+				}
+			}
+		}
+	}
+	@include tasks_list;
+}
+
+body > div.main.younger > article {
+	@include tasks_list;
+}
+
+body > div.main.moreover > article {
+	@include tasks_list;
+}
+
+body > div.main.page.home > article > .infos > section.actual {
+	@include tasks_list;
+}
+
+body > div.main.projects.index > article > table{
+	width: 100%;
+	tbody{
+		tr {
+			td.attributes{
+				div.description {
+					color: gray;
+				}
+			}
+		}
+	}
+}
+
+body > div.main.projects.edit > article {
+	form {
+		.field {
+			select, input[type="text"] {
+				min-width: 50ex;
+			}
+			textarea#project_description {
+				width: 100ex;
+				height: 30ex;
+			}
+		}
+		.date {
+			select, input[type="text"] {
+				min-width: inherit;
+			}
+		}
+	}
+}

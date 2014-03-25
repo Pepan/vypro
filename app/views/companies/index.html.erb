@@ -1,0 +1,35 @@
+<h1><%= t("page.title.companies.index") %></h1>
+
+<table>
+	<tr>
+	<th><%= t('activerecord.attributes.company.name') %></th>
+	<th><%= t('activerecord.attributes.company.description') %></th>
+	<th><%= t('activerecord.attributes.company.address') %></th>
+	<th><%= t('activerecord.attributes.company.idnumber') %></th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @companies.each do |company| %>
+	<tr>
+	<td>
+		<% if can? :show, company %>
+			<%= link_to company.name, company_path(company.id) %>
+		<% else %>
+			<%= company.name %>
+		<% end %>
+	</td>
+	<td><%= company.description %></td>
+	<td><%= company.address %></td>
+	<td><%= company.idnumber %></td>
+		<td><%= link_to t('app.helpers.show'), company_path(company.id) if can? :show, company  %></td>
+		<td><%= link_to t('app.helpers.edit'), edit_company_path(company.id) if can? :edit, company  %></td>
+		<td><%= link_to t('app.helpers.destroy'), company_path(company.id), confirm: t('helpers.destroy.areyousure'), method: :delete if can? :destroy, company  %></td>
+	</tr>
+	<% end %>
+</table>
+
+<section class="actions">
+	<%= link_to t("page.title.companies.new"), new_company_path %>
+</section>

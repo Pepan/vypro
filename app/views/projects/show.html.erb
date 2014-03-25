@@ -1,0 +1,24 @@
+<h1><%= t("page.title.projects.show") %></h1>
+
+<section class="attributes">
+	<div class="content">
+		<%= render 'show_content' %>
+	</div>
+	<aside>
+		<h2><%= t('app.projects.sidebar.title') %></h2>
+		<%= render 'sidebar' %>
+	</aside>
+</section>
+
+<h2> <%= t("app.projects.tasks.index") %></h2>
+<%= render :partial => 'tasks/tree' %>
+
+<section class="actions">
+	<%  if can? :edit, @project %>
+		<%= link_to t('app.helpers.edit'), edit_project_path(@project.id) %> |
+        <%= link_to t('app.helpers.duplicate'), duplicate_project_path(@project.id), confirm: t('helpers.duplicate.areyousure'), method: :put %> |
+<% end %>
+	
+	<%= link_to t("page.navig.projects.back"), projects_path %>	
+	| <%= link_to t("page.navig.projects.tasks.csv"), project_tasks_path(@project.id, :format=>:csv) %>
+</section>

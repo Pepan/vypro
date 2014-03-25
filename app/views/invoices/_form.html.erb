@@ -1,0 +1,19 @@
+<%= form_for [@invoice.project_user_relation.project, @invoice.project_user_relation, @invoice] do |f| %>
+    <%= render :partial => 'others/form_errors', :locals => {:object => f.object} %>
+
+    <div class="field">
+        <%= f.label :invoice_type %>:
+        <%= f.select :invoice_type_id, InvoiceType.all.collect {|p| [p.t_name, p.id ]}, {:include_blank => true } %>
+    </div>
+
+    <div class="field">
+        <%= f.label :number %>: <%= f.text_field :number %>
+    </div>
+    <div class="field">
+        <%= f.label :sum_czk %>: <%= f.number_field :sum_czk %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

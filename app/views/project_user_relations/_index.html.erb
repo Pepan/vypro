@@ -1,0 +1,27 @@
+<table>
+	<tr>
+		<th><%= t('activerecord.attributes.project_user_relation.user') %></th>
+		<th><%= t('activerecord.attributes.project_user_relation.relation_type') %></th>
+		<% if can? :manage, ProjectUserRelation and controller.controller_name == 'project_user_relations' %>
+			<th></th>
+		<% end %>
+	</tr>
+
+	<% @user_relations.each do |project_user_relation| %>
+		<tr>
+			<td>
+				<% if can? :manage, ProjectUserRelation or project_user_relation.user_id == current_user.id %>
+					<%= link_to project_user_relation.user.full_name, project_user_relation_path(project_user_relation.project_id, project_user_relation.id) unless project_user_relation.user.nil? %>
+				<% else %>
+					<%=  project_user_relation.user.full_name %>
+				<% end %>
+			</td>
+			<td><%= project_user_relation.relation_type.t_name %></td>
+			<% if can? :manage, ProjectUserRelation and controller.controller_name == 'project_user_relations' %>
+				<td><%= link_to t('app.helpers.show'), project_user_relation_path(project_user_relation.project_id, project_user_relation.id) %>
+				<%= link_to t('app.helpers.edit'), edit_project_user_relation_path(project_user_relation.project_id, project_user_relation.id) %>
+				<%= link_to t('app.helpers.destroy'), project_user_relation_path(project_user_relation.project_id, project_user_relation.id), confirm: t('helpers.destroy.areyousure'), method: :delete %></td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>

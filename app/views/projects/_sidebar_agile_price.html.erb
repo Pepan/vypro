@@ -1,0 +1,60 @@
+<div class="work_off">
+    <span class="label"> <%= t('app.projects.prices.work_off') %>: </span>
+		<span class="value">
+			<%= "%.2f" % @project.work_off %> CZK
+		</span>
+</div>
+<% if current_user.relation_to(@project).role? 'chief' %>
+	<div class="worth">
+	    <span class="label"> <%= t('app.projects.prices.worth') %>: </span>
+			<span class="value">
+				<%= "%.2f" % @project.worth %> CZK
+			</span>
+	</div>
+    <div class="made">
+        <span class="label"> <%= t('app.projects.prices.made') %>: </span>
+		<span class="value">
+			<%= "%.2f" % @project.made %> CZK
+		</span>
+    </div>
+    <br/>
+<% end %>
+
+<div class="earned">
+    <span class="label"> <%= t('app.projects.prices.earned') %>: </span>
+	<span class="value">
+		<% if current_user.relation_to(@project).role? ['chief','client'] %>
+			<%= link_to '%.2f' % @project.earned, project_project_user_relation_invoices_path(@project, @project.chief_relation) %> CZK
+		<% else %>
+			<%= '%.2f' % @project.earned %> CZK
+		<% end %>
+	</span>
+</div>
+<div class="to_charge">
+    <span class="label"> <%= t('app.projects.prices.to_charge') %>: </span>
+	<span class="value">
+		<% if current_user.relation_to(@project).role? 'chief' %>
+			<%= link_to '%.2f' % @project.to_charge, new_project_user_invoice_of_type_path(@project, @project.chief_relation, 'income') %> CZK
+		<% else %>
+			<%= '%.2f' % @project.to_charge %> CZK
+		<% end %>
+	</span>
+</div>
+
+
+<% if current_user.relation_to(@project).role? 'chief' %>
+	<div class="profit">
+	    <span class="label"> <%= t("app.projects.prices.profit.#{(@project.has_profit?.to_s)}") %>: </span>
+		<span class="value <%= (@project.has_profit? ? 'benefit' : 'loss') %>">
+			<%= "%.2f" % @project.profit.abs %> CZK
+		</span>
+	</div>
+	<% if @project.has_benefit? %>
+	    <div class="benefit">
+	        <span class="label"> <%= t("app.projects.prices.agile.benefit.true") %>: </span>
+			<span class="value benefit">
+				<%= "%.2f" % @project.benefit %> CZK
+			</span>
+	    </div>
+	<% end %>
+<% end %>

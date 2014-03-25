@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  origin_type: 
+  user: 
+  target_class: MyString
+  viewed: false
+  data_id: 1
+
+two:
+  origin_type: 
+  user: 
+  target_class: MyString
+  viewed: false
+  data_id: 1

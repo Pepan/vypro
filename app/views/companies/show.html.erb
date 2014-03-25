@@ -1,0 +1,36 @@
+<h1><%= t("page.title.companies.show") %></h1>
+
+<section class="attributes">
+	<p>
+		<b><%= t('activerecord.attributes.company.name') %>:</b>
+		<%= @company.name %>
+	</p>
+
+	<p>
+		<b><%= t('activerecord.attributes.company.description') %>:</b>
+		<%= @company.description %>
+	</p>
+
+	<p>
+		<b><%= t('activerecord.attributes.company.address') %>:</b>
+		<%= @company.address %>
+	</p>
+
+	<p>
+		<b><%= t('activerecord.attributes.company.idnumber') %>:</b>
+		<%= @company.idnumber %>
+	</p>
+
+	<% if can? :edit, @company %>
+		<p>
+			<%= link_to t('app.companies.users.index'), company_users_path(@company.id) %>
+		</p>
+	<% end %>
+</section>
+
+<section class="actions">
+	<% if can? :edit, @company %>
+		<%= link_to t('app.helpers.edit'), edit_company_path(@company.id) %> | 
+	<% end %>
+	<%= link_to t("page.navig.companies.back"), companies_path %>	
+</section>

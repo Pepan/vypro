@@ -1,0 +1,22 @@
+<% if controller.controller_name == 'tasks' and can? :create, Note  %>
+	<section class="actions">
+		<%= link_to t("app.projects.tasks.notes.new"), new_project_task_note_path(@task.project_id, @task.id) %>
+	</section>
+<% end %>
+
+<section class="notes">
+	<% @notes.each do |note| %>
+		<figure class="note" >
+			<span class="time"><%= l(note.updated_at, :format => :short) %></span>
+
+			<span class="user"><%= note.user.full_name %></span>
+
+			<div class="content" ><%= simple_format(note.content) %></div>
+
+			<div class="service">
+				<%= link_to t('app.helpers.edit'), edit_project_task_note_path(@task.project_id, @task.id, note.id) if can? :edit, note %>
+				<%= link_to t('app.helpers.destroy'), project_task_note_path(@task.project, @task.id, note.id), :confirm => t('helpers.destroy.areyousure'), :method => :delete  if can? :destroy, note %>
+			</div>
+		</figure>
+	<% end %>
+</section>

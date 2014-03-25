@@ -1,0 +1,45 @@
+<%= form_for(@project) do |f| %>
+	<%= render :partial=>'others/form_errors', :locals=>{:object=>f.object}  %>
+
+	<div class="field">
+		<%= f.label :project_state_type %><br />
+		<%= f.select :project_state_type_id, ProjectStateType.all.collect {|p| [p.t_name, p.id ]}, {:include_blank => true} %>
+	</div>
+
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_area :description %>
+	</div>
+	<div class="field">
+		<%= f.label :company %><br />
+		<%= f.select :company_id, current_user.created_companies.collect {|p| [p.name, p.id ]}, {:include_blank => true} %>
+		<%= link_to t("page.title.companies.new"), new_company_path %>
+	</div>
+	<div class="field date">
+		<%= f.label :work_started_at %><br />
+		<%= f.datetime_select :work_started_at, :default => 0.days.from_now %>
+	</div>
+
+	<div class="field">
+		<%= f.label :hour_price_czk %><br />
+		<%= f.number_field :hour_price_czk %> CZK
+	</div>
+
+    <div class="field">
+        <%= f.label :project_type %><br />
+        <%= f.select :project_type_id, ProjectType.all.collect {|p| [p.t_name, p.id ]}, {:include_blank => true} %>
+    </div>
+
+	<div class="field">
+		<%= f.label :target_price_czk %><br />
+		<%= f.number_field :target_price_czk %> CZK
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

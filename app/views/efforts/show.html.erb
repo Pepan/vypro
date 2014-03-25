@@ -1,0 +1,38 @@
+<h1><%= t("page.title.efforts.show") %></h1>
+
+<section class="attributes">
+	<div class="content">
+		<h2>
+			<span class="name">
+				<%= @effort.name.camelcase %>
+			</span>
+
+			<span class="user">
+				-<%= t('app.other.entered_by') %>
+				<%= link_to @effort.user.full_name, user_path(@effort.user) %>
+			</span>
+		</h2>
+
+		<div class="description">
+			<%= simple_format(@effort.description) %>
+		</div>
+
+		<div class="interval">
+			<span class="label"> <%= t("app.projects.tasks.efforts.interval") %> : </span>
+			<%= l(@effort.begin_at, :format => :short) %> - <%= l(@effort.end_at, :format => :short) %>
+		</div>
+
+		<span class="label"> <%= t("app.projects.tasks.efforts.progress") %> : </span>
+		<div class="progress">
+			<div class="bar" style="width:<%= @effort.progress.to_s+'%' %>"></div>
+		</div>
+	</div>
+
+</section>
+
+<section class="actions">
+	<% if can? :edit, @effort %>
+		<%= link_to t('app.helpers.edit'), project_task_effort_path(@effort.task.project_id, @effort.task_id, @effort.id) %> | 
+	<% end %>
+	<%= link_to t("page.navig.efforts.back"), project_task_path(@effort.task.project_id, @effort.task_id) %>	
+</section>

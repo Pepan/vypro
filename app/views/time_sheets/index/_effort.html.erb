@@ -1,0 +1,9 @@
+<figure class="effort">
+  <section>
+    <span class="period">
+      <%= l(effort.begin_at, :format => :short) %> - <%= l(effort.end_at, :format => :short) %>
+    </span>
+	  <span class="user"><%= effort.user.lastname %></span>:
+    <span class="description"><%= effort.description[0..60] %><%= '...' if effort.description.length>60 %></span>
+  </section>
+</figure>

@@ -1,0 +1,36 @@
+
+body > div.main.page.home > article > section.devise_links > a {
+	color: gray;
+}
+
+body > div.main.page.home > article {
+	.infos {
+		word-spacing: -1em;
+		section.actual, aside.projects, aside.demo_accounts {
+			display: inline-block;
+			word-spacing: normal;
+			vertical-align: top;
+		}
+		section.actual {
+			width: 70%;
+			padding-right: 1%;
+		}	
+		aside.projects {
+			width: 29%;
+			table.projects {
+				td {
+					vertical-align: top;
+					h3 {
+						margin: 0;
+						.company {
+							color: #E1E1E1;
+						}
+					}
+				}
+			}
+		}
+		aside.demo_accounts {
+			width: 29%;
+		}
+	}
+}

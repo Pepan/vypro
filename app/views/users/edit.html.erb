@@ -1,0 +1,8 @@
+<h1><%= t("page.title.users.edit") %></h1>
+
+<%= render 'form' %>
+
+<section class="actions">
+	<%= link_to t("page.navig.users.back"), user_path(@user.id) %> |
+	<%= link_to t("app.helpers.show"), user_path(@user.id) %>
+</section>

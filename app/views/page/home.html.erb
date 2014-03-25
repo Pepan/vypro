@@ -1,0 +1,34 @@
+<% unless user_signed_in? %>
+	<h1><%= t('page.title.home_login') %></h1>
+    <div class="infos">
+        <section class="actual">
+
+            <%= render  :partial=>'users/login_form' %>
+
+        </section>
+	    <% if @demo_accounts.any? %>
+	        <aside class="demo_accounts">
+	            <h2><%= t('page.title.demo_accounts') %></h2>
+	            <p><%= t('page.desc.demo_note') %></p>
+	            <%= render :partial=> 'users/demo_accounts' %>
+	        </aside>
+		<% end %>
+    </div>
+<% else %>
+	<h1><%= t('page.title.home') %></h1>
+	<div class="infos">
+		<section class="actual">
+
+			<h2><%= t('app.projects.tasks.lasts') %></h2>
+			<%= render :partial=>'tasks/index' %>
+
+			<h2><%= t('app.events.lasts') %></h2>
+			<%= render :partial=>'events/index' %>
+
+		</section>
+		<aside class="projects">
+			<h2><%= t('app.projects.index') %></h2>
+			<%= render :partial=>'projects/index' %>
+		</aside>
+	</div>
+<% end %>

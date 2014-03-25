@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title><%= title %></title>
+
+		<%= favicon_link_tag %>
+		<meta name="description" content="<%= description %>"/>
+		<meta name="keywords" content="planovac"/>
+		<meta name="author" content="JchSoft.cz - chmel@jchsoft.cz"/>
+		<meta name="robots" content="index, follow" />
+
+		<%= stylesheet_link_tag "application" %>
+		<script type="text/javascript">
+			var root_path='<%= root_path %>';
+		</script>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tag %>
+		<% if request.user_agent and request.user_agent.include? 'MSIE' %>
+			<!--[if lte IE 8]>
+			  <script type="text/javascript">
+
+			  (function(){
+					var html5elmeents = "address|article|aside|audio|canvas|command|datalist|details|dialog|figure|figcaption|footer|header|hgroup|keygen|mark|meter|menu|nav|progress|ruby|section|time|video".split('|');
+					  for(var i = 0; i < html5elmeents.length; i++){
+							document.createElement(html5elmeents[i]);
+						}
+					}
+			  )();
+
+			  </script>
+			<![endif]-->
+		<% end %>
+	</head>
+	<body>
+		<%= render 'layouts/header' %>
+
+		<div class="main <%= controller.controller_name %> <%= controller.action_name %> <%= 'edit' if ['create', 'new', 'update'].include?(controller.action_name) %>">
+			<%= render(:partial=>'others/breadcrumbs', :locals => {:bc => breadcrumbs }) unless !signed_in? and controller.action_name == 'home' %>
+			<article class="<%= @task.task_type.code unless @task.nil? %>">
+				<% unless @item.nil? or @item.id.nil? %>
+					<div id="timeleft" data-id="<%= @item.id %>">??</div>
+				<% end %>
+				<%= render  :partial=>'others/flash', :locals=>{:flash=>flash} %>
+
+				<%= yield %>
+			</article>
+		</div>
+
+		<%= render 'layouts/footer' %>
+
+		<%= debug(params) if Rails.env.development? %>
+	</body>
+</html>

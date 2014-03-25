@@ -1,0 +1,16 @@
+
+section.annexs {
+	> figure.annex {
+		> span {
+			display: inline-block;
+			&.content {
+				width: 30%;
+			}
+			&.time {
+				width: 10%;
+				color: gray;
+				font-size: smaller;
+			}
+		}
+	}
+}

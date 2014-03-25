@@ -1,0 +1,29 @@
+<% if controller.controller_name == 'projects' and can? :create, Sprint %>
+	<section class="actions">
+		<%= link_to t("app.projects.sprints.new"), add_project_sprints_path(@project.id), method: :put %>
+	</section>
+<% end %>
+
+<table class="sprints">
+	<% @sprints.each do |sprint| %>
+		<tr class="separator"><td colspan="2"></td></tr>
+		<tr>
+			<td class="tier"><%= link_to sprint.tier.to_s+'.', project_sprint_path(sprint.project_id, sprint.id) %></td>
+			<td class="measure"><div class="progress"> <div class="bar" style="width:<%= sprint.overal_progress.to_s+'%' %>"></div></div></td>
+			<td class="tasks">
+				<span class="label"> <%= t("app.projects.tasks.count.unfinished") %>: </span>
+				<span class="taskscount">
+					<%= sprint.count_unfinished_tasks %> / <%= sprint.count_all_tasks %>,
+				</span>
+
+				<span class="label"> <%= t("app.projects.tasks.count.toapprove") %>: </span>
+				<span class="taskscount">
+					<%= sprint.count_tasks_by 'completed?' %>
+				</span>
+			</td>
+			<% if controller.controller_name == 'sprints' and can? :manage, Event %>
+				<td class="service"><%= link_to 'x', sprint, :confirm => t('helpers.destroy.areyousure'), :method => :delete if can? :destroy, sprint %></td>
+			<% end %>
+		</tr>	
+	<% end %>
+</table>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  progress: 1
+  begin_at: 2011-11-12 14:08:16
+  end_at: 2011-11-12 14:08:16
+  user: 
+  task: 
+
+two:
+  name: MyString
+  description: MyString
+  progress: 1
+  begin_at: 2011-11-12 14:08:16
+  end_at: 2011-11-12 14:08:16
+  user: 
+  task: 

@@ -1,0 +1,89 @@
+<h4> <%= t("app.projects.tasks.efforts.progress") %></h4>
+<div class="progress">
+	<div class="bar" style="width:<%= @project.overal_progress.to_s+'%' %>"></div>
+</div>
+<div class="timeusage">
+	<span class="label"> <%= t("app.projects.tasks.timeusage") %>: </span>
+	<span class="value">
+		<%= (@project.overall_time_usage/3600).round(1).to_s+' '+t('app.projects.tasks.hours') %>
+	</span>
+</div>
+<div class="durations">
+	<span class="label"> <%= t("activerecord.attributes.task.duration") %>: </span>
+	<span class="timeusage">
+		<%= to_duration(@project.overall_duration[:best]) %> - <%= to_duration(@project.overall_duration[:worst]) %>
+		<%= t('app.projects.tasks.hours') %>
+	</span>
+</div>
+
+<% if current_user.relation_to(@project).role? ['chief','client'] %>
+	<h4>
+	    <% if current_user.relation_to(@project).role? 'chief' %>
+			<%= @project.type.t_name.downcase %>
+		<% else %>
+	        <%= t("app.projects.prices.title") %>
+	    <% end %>
+	</h4>
+	<%= render :partial=>"sidebar_#{@project.type.code}_price" %>
+<% end %>
+	
+<h4> <%= t("app.projects.tasks.moreover.title") %></h4>
+<div class="timeusage">
+	<span class="label"> <%= t("app.projects.tasks.moreover.timeusage") %>: </span>
+	<span class="value">
+		<%= (@project.moreover_time_usage/3600).round(1).to_s+' '+t('app.projects.tasks.hours') %>
+	</span>
+</div>
+<div class="durations">
+	<span class="label"> <%= t("app.projects.tasks.moreover.duration") %>: </span>
+	<span class="timeusage">
+		<%= to_duration(@project.moreover_duration[:best]) %> - <%= to_duration(@project.moreover_duration[:worst]) %>
+		<%= t('app.projects.tasks.hours') %>
+	</span>
+</div>
+<div class="tools">
+	<%= link_to t("app.projects.tasks.moreovers"), moreover_project_tasks_path(@project), :class => 'link' if can? :read, Task %>
+	,
+	<%= link_to t("app.projects.tasks.youngers"), younger_project_tasks_path(@project), :class => 'link' if can? :read, Task %>
+</div>
+
+<h4> <%= t("app.projects.tasks.index") %></h4>
+<div class="tasks">
+	<span class="label"> <%= t("app.projects.tasks.count.all") %>: </span>
+	<span class="taskscount">
+		<%= @project.count_all_tasks %>
+	</span>
+	<span class="label"> <%= t("app.projects.tasks.count.unfinished") %>: </span>
+	<span class="taskscount">
+		<%= @project.count_unfinished_tasks %>
+	</span>
+	<br />
+	<span class="label"> <%= t("app.projects.tasks.count.new") %>: </span>
+	<span class="taskscount">
+		<%= @project.count_tasks_by 'new' %>
+	</span>
+	<span class="label"> <%= t("app.projects.tasks.count.inprogress") %>: </span>
+	<span class="taskscount">
+		<%= @project.count_tasks_by 'inprogress' %>
+	</span>
+	<br />
+	<span class="label"> <%= t("app.projects.tasks.count.completed?") %>: </span>
+	<span class="taskscount">
+		<%= @project.count_tasks_by 'completed?' %>
+	</span>
+	<span class="label"> <%= t("app.projects.tasks.count.approved") %>: </span>
+	<span class="taskscount">
+		<%= @project.count_tasks_by 'approved' %>
+	</span>
+	<span class="label"> <%= t("app.projects.tasks.count.bug") %>: </span>
+	<span class="taskscount">
+		<%= @project.count_bugs %>
+	</span>
+</div>
+
+<h4> <%= t("page.title.project_user_relations.index") %></h4>
+<div class="users">
+	<%= render :partial=>'project_user_relations/index' %>
+	<%= link_to t("app.projects.users.control"), project_user_relations_path(@project), :class => 'link' if can? :manage, ProjectUserRelation %>
+</div>
+

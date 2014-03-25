@@ -1,0 +1,27 @@
+<h1><%%= t("page.title.<%= plural_table_name %>.index") %></h1>
+
+<table>
+	<tr>
+<% attributes.each do |attribute| -%>
+	<th><%%= t('activerecord.attributes.<%= singular_table_name %>.<%= attribute.name %>') %></th>
+<% end -%>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+	<tr>
+<% attributes.each do |attribute| -%>
+	<td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+<% end -%>
+		<td><%%= link_to t('app.helpers.show'), <%= singular_table_name %>_path(<%= singular_table_name %>.id) %></td>
+		<td><%%= link_to t('app.helpers.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>.id) %></td>
+		<td><%%= link_to t('app.helpers.destroy'), <%= singular_table_name %>_path(<%= singular_table_name %>.id), <%= key_value :confirm, "t('helpers.destroy.areyousure')" %>, <%= key_value :method, ":delete" %> %></td>
+	</tr>
+	<%% end %>
+</table>
+
+<section class="actions">
+	<%%= link_to t("page.title.<%= plural_table_name %>.new"), new_<%= singular_table_name %>_path %>
+</section>

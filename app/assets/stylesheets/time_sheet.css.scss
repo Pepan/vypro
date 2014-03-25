@@ -1,0 +1,20 @@
+// Place all the styles related to the time_sheet controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body > div.time_sheets.index > article > section.data {
+	> figure {
+		> section {
+			background-color: #f6f6f6;
+			> figure {
+				> section {
+					background-color: #fafafa;
+					> figure {
+						> section {
+						}
+					}
+				}
+			}
+		}
+	}
+}

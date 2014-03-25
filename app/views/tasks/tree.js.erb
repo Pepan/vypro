@@ -1,0 +1,3 @@
+var content = "<%= escape_javascript( render :partial=>'tasks/sub_tree', :locals=>{:tasks=>@tasks, :level=>0} ) %>";
+
+$('#tree_container').html(content);

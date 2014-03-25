@@ -1,0 +1,29 @@
+<h2>
+	<span class="name">
+		<%= @project.name.camelcase %>
+	</span>
+
+	<span class="state">
+		<%= @project.project_state_type.t_name.downcase unless @project.project_state_type.nil? %>
+	</span>
+
+	<span class="company">
+		-<%= t('app.other.by') %>
+		<%= link_to @project.company.name, company_path(@project.company.id) %>
+	</span>
+</h2>
+
+<div class="description">
+	<%= simple_format(@project.description) %>
+</div>
+
+<h3><%= t('app.events.lasts') %></h3>
+<%= render :partial=>'events/index' %>
+<section class="actions">
+	<%= link_to t('app.projects.events.index'), project_events_path(@project.id) %>
+</section>
+
+<h3><%= t('app.projects.sprints.index') %></h3>
+<%= render :partial=>'sprints/index' %>
+
+

@@ -1,0 +1,62 @@
+
+<% if controller.controller_name == 'projects' and can? :create, Task %>
+	<section class="actions">
+		<%= link_to t("app.projects.tasks.new_task"), new_project_task_of_type_path(@project.id, 'task') %> | 
+		<%= link_to t("app.projects.tasks.new_bug"), new_project_task_of_type_path(@project.id, 'bug') %> | 
+		<%= link_to t("app.projects.tasks.new_idea"), new_project_task_of_type_path(@project.id, 'idea') %> 
+	</section>
+<% end %>
+
+<table class="tasks">
+	<% @tasks.each do |task| %>
+		<tr class="separator"><td colspan="6"></td></tr>
+		<tr class="reference <%= task.state_type.code.delete('?') %> <%= task.task_type.code %> <%= task.assigned_user == present_user ? 'my_own':'alien' %>" data-href="<%= project_task_path(task.project_id, task)  %>" >
+			<td class="priority <%= task.priority_type.code %>" title="<%= t('activerecord.attributes.task.priority_type_id') %> <%= task.priority_type.t_name %>" rowspan="2"><%= task.priority_type.symbol.html_safe %></td>
+			<td class="type <%= task.task_type.code %>" rowspan="2">
+				<%= task.task_type.t_name.mb_chars.downcase.to_s %><br/>
+				<% unless task.clientely_type_id.nil? %>
+					<span class="clientely_type <%= task.clientely_type.code %> ">
+						<%= task.clientely_type.t_name %>
+					</span>
+				<% end %>				
+			</td>
+
+			<td class="state <%= task.state_type.code.delete('?') %>" rowspan="2"><%= task.state_type.t_name.mb_chars.downcase.to_s %></td>
+
+			<td class="name">
+				<%= link_to task.name.camelcase, project_task_path(task.project_id, task) %>
+				<div class="path"><%= render :partial => 'tasks/path', :locals=>{:task=>task.task} %></div>
+         </td>
+
+			<td>
+				<div class="progress"> <div class="bar" style="width:<%= task.progress.to_s+'%' %>"></div></div>
+				<div class="duration <%= 'over_long' if (task.time_usage/3600) > task.duration_worst.duration/60 %>">
+					<%= (task.time_usage/3600).round(1).to_s+' '+t('app.projects.tasks.hours') %>
+					<%= t('app.other.from') %>
+					<%= task.duration_best.t_name+' - '+task.duration_worst.t_name unless task.duration_best.nil? or task.duration_worst.nil? %>
+				</div>
+			</td>
+
+			<% if controller.controller_name == 'projects' or controller.controller_name == 'sprints' %>
+				<td class="user" rowspan="2"><%= link_to task.assigned_user.full_name, task.assigned_user %></td>
+			<% else %>
+				<td class="user" rowspan="2"><%= link_to task.project.name, task.project unless task.project.nil? %></td>
+			<% end %>
+
+			<td class="service" rowspan="2">
+				<%  if can? :edit, task %>
+					<%= link_to t('app.helpers.edit'), edit_project_task_path(task.project_id, task) %>
+				<% end %>
+				<%  if can? :destroy, task %>
+					<%= link_to t('app.helpers.destroy'), project_task_path(task.project_id, task), :confirm => t('helpers.destroy.areyousure'), :method => :delete %>
+				<% end %>
+			</td>
+		</tr>
+		
+		<tr class=" <%= task.state_type.code.delete('?') %> <%= task.task_type.code %>">
+			<td class="qtip" data-qtip="<%= description_project_task_path(task.project_id, task) %>" colspan="2">
+				<div class="description" ><%= task.description[0..80] %><%= '...' if task.description.length>80 %> </div>
+			</td>
+		</tr>
+	<% end %>
+</table>
