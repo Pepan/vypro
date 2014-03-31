@@ -14,6 +14,7 @@ class Effort < ActiveRecord::Base
 		case
 			when user.is_a?(User) then	where(user_id: user.id)
 			when user.is_a?(Integer) then where(user_id: user)
+			when (user.is_a?(String) and user.size > 0) then where(user_id: user.to_i)
 			when user.blank? then where(nil)
 			else raise "wrong param : #{user.inspect}"
 		end
